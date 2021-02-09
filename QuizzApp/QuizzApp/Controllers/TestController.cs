@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using QuizzApp.Models;
 
@@ -10,7 +7,7 @@ namespace QuizzApp.Controllers
 {
     [ApiController]
     [Route("api/tests")]
-    
+
     public class TestController : Controller
     {
         ApplicationContext db;
@@ -34,7 +31,7 @@ namespace QuizzApp.Controllers
 
         [Authorize]
         [HttpPost]
-        public IActionResult Post( Test Test)
+        public IActionResult Post(Test Test)
         {
             if (ModelState.IsValid)
             {
