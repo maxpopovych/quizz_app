@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace WebApi.Models
+namespace QuizzApp.Models
 {
     public class AuthenticateRequest
     {

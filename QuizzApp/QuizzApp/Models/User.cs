@@ -1,12 +1,14 @@
 using System.Text.Json.Serialization;
 
-namespace WebApi.Entities
+namespace QuizzApp.Models
 {
     public class User
     {
         public int Id { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+#nullable enable
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
+#nullable disable
         public string Username { get; set; }
 
         [JsonIgnore]

@@ -14,9 +14,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using QuizzApp.Helpers;
 using QuizzApp.Models;
-using WebApi.Helpers;
-using WebApi.Services;
+using QuizzApp.Services;
 
 namespace QuizzApp
 {

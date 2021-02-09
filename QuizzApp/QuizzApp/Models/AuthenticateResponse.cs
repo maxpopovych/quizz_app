@@ -1,6 +1,5 @@
-using WebApi.Entities;
 
-namespace WebApi.Models
+namespace QuizzApp.Models
 {
     public class AuthenticateResponse
     {

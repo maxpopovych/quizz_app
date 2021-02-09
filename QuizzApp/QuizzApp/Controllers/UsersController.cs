@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using WebApi.Models;
-using WebApi.Services;
+using QuizzApp.Models;
+using QuizzApp.Services;
 
-namespace WebApi.Controllers
+namespace QuizzApp.Controllers
 {
     [ApiController]
     [Route("api/users")]
