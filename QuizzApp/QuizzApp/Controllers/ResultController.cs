@@ -16,7 +16,28 @@ namespace QuizzApp.Controllers
         {
             db = context;
         }
+        [Authorize]
+        [HttpGet]
+        public IEnumerable<Result> Get()
+        {
+            var result = db.Results;
+            return result;
+        }
+        [Authorize]
+        [HttpGet("{id}")]
+        public Result Get(int id)
+        {
+            var result = db.Results.FirstOrDefault(x => x.Id == id);
+            return result;
+        }
 
+        [Authorize]
+        [HttpGet("user/{id}")]
+        public IEnumerable<UserChoice> GetUserChoiseByResultId(int id)
+        {
+            var result = db.UserChoices.Where(x=> x.ResultId == id).DefaultIfEmpty();
+            return result;
+        }
         [HttpPost]
         public IActionResult Post(SetResultRequest result)
         {
