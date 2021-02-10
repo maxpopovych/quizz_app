@@ -24,7 +24,13 @@ namespace QuizzApp
         {
             services.AddDbContext<ApplicationContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddControllers();
-
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+            });
             // configure strongly typed settings object
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
@@ -39,6 +45,7 @@ namespace QuizzApp
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors("CorsPolicy");
 
             app.UseHttpsRedirection();
 

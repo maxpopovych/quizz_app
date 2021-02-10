@@ -33,7 +33,6 @@ namespace QuizzApp.Services
         public AuthenticateResponse Authenticate(AuthenticateRequest model)
         {
             var user = db.Users.SingleOrDefault(x => x.Username == model.Username && x.Password == model.Password);
-
             // return null if user not found
             if (user == null) return null;
 
