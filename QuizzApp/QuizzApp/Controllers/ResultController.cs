@@ -45,12 +45,16 @@ namespace QuizzApp.Controllers
                 var res = new Result { intervieweeName = result.Name, TestId = result.TestId, score = 0 };
                 db.Results.Add(res);
                 db.SaveChanges();
+                int score = 0;
                 foreach (var ans in result.Answres)
                 {
                     var userchoise = new UserChoice { ResultId = res.Id, QuestionId = Int32.Parse(ans.Key), AnswerId = ans.Value };
                     db.UserChoices.Add(userchoise);
+                    if (db.Answers.FirstOrDefault(x => x.Id == ans.Value).isTrue)
+                        ++score;
                 }
-
+                res.score = score;
+                db.Results.Update(res);
                 db.SaveChanges();
                 return Ok(result);
             }
