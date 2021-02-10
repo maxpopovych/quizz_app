@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using QuizzApp.Models;
 
@@ -35,7 +34,7 @@ namespace QuizzApp.Controllers
         [HttpGet("user/{id}")]
         public IEnumerable<UserChoice> GetUserChoiseByResultId(int id)
         {
-            var result = db.UserChoices.Where(x=> x.ResultId == id).DefaultIfEmpty();
+            var result = db.UserChoices.Where(x => x.ResultId == id).DefaultIfEmpty();
             return result;
         }
         [HttpPost]
@@ -48,10 +47,10 @@ namespace QuizzApp.Controllers
                 db.SaveChanges();
                 foreach (var ans in result.Answres)
                 {
-                    var userchoise = new UserChoice { ResultId = res.Id,QuestionId = Int32.Parse(ans.Key),AnswerId = ans.Value};
+                    var userchoise = new UserChoice { ResultId = res.Id, QuestionId = Int32.Parse(ans.Key), AnswerId = ans.Value };
                     db.UserChoices.Add(userchoise);
                 }
-                
+
                 db.SaveChanges();
                 return Ok(result);
             }
