@@ -4,6 +4,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using QuizzApp.Helpers;
@@ -21,22 +22,18 @@ namespace QuizzApp.Services
 
     public class UserService : IUserService
     {
-        // users hardcoded for simplicity, store in a db with hashed passwords in production applications
-        private List<User> _users = new List<User>
-        {
-            new User { Id = 1, FirstName = "Test", LastName = "User", Username = "test", Password = "test" }
-        };
-
         private readonly AppSettings _appSettings;
+        private ApplicationContext db;
 
-        public UserService(IOptions<AppSettings> appSettings)
+        public UserService(IOptions<AppSettings> appSettings, ApplicationContext db)
         {
+            this.db = db;
             _appSettings = appSettings.Value;
         }
 
         public AuthenticateResponse Authenticate(AuthenticateRequest model)
         {
-            var user = _users.SingleOrDefault(x => x.Username == model.Username && x.Password == model.Password);
+            var user = db.Users.SingleOrDefault(x => x.Username == model.Username && x.Password == model.Password);
 
             // return null if user not found
             if (user == null) return null;
@@ -49,12 +46,12 @@ namespace QuizzApp.Services
 
         public IEnumerable<User> GetAll()
         {
-            return _users;
+            return db.Users;
         }
 
         public User GetById(int id)
         {
-            return _users.FirstOrDefault(x => x.Id == id);
+            return db.Users.FirstOrDefault(x => x.Id == id);
         }
 
         // helper methods

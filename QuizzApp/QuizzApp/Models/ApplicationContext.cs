@@ -14,6 +14,6 @@ namespace QuizzApp.Models
         public DbSet<Question> Questions { get; set; }
         public DbSet<Answer> Answers { get; set; }
         public DbSet<Result> Results { get; set; }
-        public DbSet<User> Admins { get; set; }
+        public DbSet<User> Users { get; set; }
     }
 }

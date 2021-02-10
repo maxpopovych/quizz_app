@@ -9,10 +9,12 @@ namespace QuizzApp.Controllers
     public class UsersController : ControllerBase
     {
         private IUserService _userService;
+        private ApplicationContext db;
 
-        public UsersController(IUserService userService)
+        public UsersController(IUserService userService, ApplicationContext context)
         {
             _userService = userService;
+            db = context;
         }
 
         [HttpPost("authenticate")]
