@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using QuizzApp.Models;
@@ -14,7 +13,8 @@ namespace QuizzApp.Controllers
     [Route("test")]
     public class ResultController : Controller
     {
-        ApplicationContext db;
+        private readonly ApplicationContext db;
+
         /// <summary>
         /// Class constructor
         /// </summary>
@@ -23,6 +23,7 @@ namespace QuizzApp.Controllers
         {
             db = context;
         }
+
         /// <summary>
         /// Get all results
         /// </summary>
@@ -31,9 +32,10 @@ namespace QuizzApp.Controllers
         [HttpGet]
         public IEnumerable<Result> Get()
         {
-            var result = db.Results;
+            Microsoft.EntityFrameworkCore.DbSet<Result> result = db.Results;
             return result;
         }
+
         /// <summary>
         /// Get result by id
         /// </summary>
@@ -43,9 +45,10 @@ namespace QuizzApp.Controllers
         [HttpGet("{id}")]
         public Result Get(int id)
         {
-            var result = db.Results.FirstOrDefault(x => x.Id == id);
+            Result result = db.Results.FirstOrDefault(x => x.Id == id);
             return result;
         }
+
         /// <summary>
         /// Get all user choices from result by id
         /// </summary>
@@ -55,9 +58,10 @@ namespace QuizzApp.Controllers
         [HttpGet("user/{id}")]
         public IEnumerable<UserChoice> GetUserChoiseByResultId(int id)
         {
-            var result = db.UserChoices.Where(x => x.ResultId == id).DefaultIfEmpty();
+            IQueryable<UserChoice> result = db.UserChoices.Where(x => x.ResultId == id).DefaultIfEmpty();
             return result;
         }
+
         /// <summary>
         /// Add result
         /// </summary>
@@ -68,22 +72,26 @@ namespace QuizzApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                var res = new Result { intervieweeName = result.Name, TestId = result.TestId, score = 0 };
+                Result res = new Result { IntervieweeName = result.Name, TestId = result.TestId, Score = 0 };
                 db.Results.Add(res);
                 db.SaveChanges();
                 int score = 0;
-                foreach (var ans in result.Answres)
+                foreach (KeyValuePair<string, int> ans in result.Answres)
                 {
-                    var userchoise = new UserChoice { ResultId = res.Id, QuestionId = Int32.Parse(ans.Key), AnswerId = ans.Value };
+                    UserChoice userchoise = new UserChoice { ResultId = res.Id, QuestionId = int.Parse(ans.Key), AnswerId = ans.Value };
                     db.UserChoices.Add(userchoise);
                     if (db.Answers.FirstOrDefault(x => x.Id == ans.Value).isTrue)
+                    {
                         ++score;
+                    }
+
                 }
-                res.score = score;
+                res.Score = score;
                 db.Results.Update(res);
                 db.SaveChanges();
                 return Ok(result);
             }
+
             return BadRequest(ModelState);
         }
     }

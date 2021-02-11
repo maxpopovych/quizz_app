@@ -10,10 +10,10 @@ namespace QuizzApp.Controllers
     /// </summary>
     [ApiController]
     [Route("api/tests")]
-
     public class TestController : Controller
     {
-        ApplicationContext db;
+        private readonly ApplicationContext db;
+
         /// <summary>
         /// Class constructor
         /// </summary>
@@ -22,6 +22,7 @@ namespace QuizzApp.Controllers
         {
             db = context;
         }
+
         /// <summary>
         /// Get all tests
         /// </summary>
@@ -31,6 +32,7 @@ namespace QuizzApp.Controllers
         {
             return db.Tests.ToList();
         }
+
         /// <summary>
         /// Get test by id
         /// </summary>
@@ -42,6 +44,7 @@ namespace QuizzApp.Controllers
             Test Test = db.Tests.FirstOrDefault(x => x.Id == id);
             return Test;
         }
+
         /// <summary>
         /// Add test
         /// </summary>
@@ -57,8 +60,10 @@ namespace QuizzApp.Controllers
                 db.SaveChanges();
                 return Ok(Test);
             }
+
             return BadRequest(ModelState);
         }
+
         /// <summary>
         /// Edit(update) test 
         /// </summary>
@@ -74,8 +79,10 @@ namespace QuizzApp.Controllers
                 db.SaveChanges();
                 return Ok(Test);
             }
+
             return BadRequest(ModelState);
         }
+
         /// <summary>
         /// Delete test by id
         /// </summary>
@@ -91,8 +98,8 @@ namespace QuizzApp.Controllers
                 db.Tests.Remove(Test);
                 db.SaveChanges();
             }
+
             return Ok(Test);
         }
-
     }
 }

@@ -22,7 +22,7 @@ namespace QuizzApp.Services
     public class UserService : IUserService
     {
         private readonly AppSettings _appSettings;
-        private ApplicationContext db;
+        private readonly ApplicationContext db;
 
         public UserService(IOptions<AppSettings> appSettings, ApplicationContext db)
         {
@@ -32,13 +32,16 @@ namespace QuizzApp.Services
 
         public AuthenticateResponse Authenticate(AuthenticateRequest model)
         {
-            var user = db.Users.SingleOrDefault(x => x.Username == model.Username && x.Password == model.Password);
+            User user = db.Users.SingleOrDefault(x => x.Username == model.Username && x.Password == model.Password);
+            
             // return null if user not found
-            if (user == null) return null;
+            if (user == null)
+            {
+                return null;
+            }
 
             // authentication successful so generate jwt token
-            var token = generateJwtToken(user);
-
+            string token = generateJwtToken(user);
             return new AuthenticateResponse(user, token);
         }
 
@@ -53,19 +56,19 @@ namespace QuizzApp.Services
         }
 
         // helper methods
-
         private string generateJwtToken(User user)
         {
+
             // generate token that is valid for 7 days
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
-            var tokenDescriptor = new SecurityTokenDescriptor
+            JwtSecurityTokenHandler tokenHandler = new JwtSecurityTokenHandler();
+            byte[] key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+            SecurityTokenDescriptor tokenDescriptor = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(new[] { new Claim("id", user.Id.ToString()) }),
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
-            var token = tokenHandler.CreateToken(tokenDescriptor);
+            SecurityToken token = tokenHandler.CreateToken(tokenDescriptor);
             return tokenHandler.WriteToken(token);
         }
     }

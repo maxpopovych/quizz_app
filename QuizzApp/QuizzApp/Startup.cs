@@ -28,6 +28,7 @@ namespace QuizzApp
         {
             Configuration = configuration;
         }
+
         /// <summary>
         /// Configuration
         /// </summary>
@@ -48,12 +49,12 @@ namespace QuizzApp
                         .AllowAnyMethod()
                         .AllowAnyHeader());
             });
+
             // configure strongly typed settings object
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
-
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
@@ -89,9 +90,10 @@ namespace QuizzApp
                             new List<string>()
                           }
                         });
+
                 // Set the comments path for the Swagger JSON and UI.
-                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                string xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                string xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
 
@@ -108,27 +110,23 @@ namespace QuizzApp
             {
                 app.UseDeveloperExceptionPage();
             }
+
             app.UseCors("CorsPolicy");
-
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseMiddleware<JwtMiddleware>();
+
             //app.UseAuthentication();
             app.UseAuthorization();
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
-
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
-
         }
     }
 }

@@ -9,14 +9,17 @@
         /// Id
         /// </summary>
         public int Id { get; set; }
+
         /// <summary>
         /// Related result id
         /// </summary>
         public int ResultId { get; set; }
+
         /// <summary>
         /// Related question id
         /// </summary>
         public int QuestionId { get; set; }
+
         /// <summary>
         /// Related answer id
         /// </summary>

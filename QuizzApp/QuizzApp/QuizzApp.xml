@@ -344,7 +344,7 @@
             Id
             </summary>
         </member>
-        <member name="P:QuizzApp.Models.Question.question">
+        <member name="P:QuizzApp.Models.Question.Text">
             <summary>
             Question text
             </summary>
@@ -364,7 +364,7 @@
             Id
             </summary>
         </member>
-        <member name="P:QuizzApp.Models.Result.intervieweeName">
+        <member name="P:QuizzApp.Models.Result.IntervieweeName">
             <summary>
             Interviewee name
             </summary>
@@ -374,7 +374,7 @@
             Id of related test
             </summary>
         </member>
-        <member name="P:QuizzApp.Models.Result.score">
+        <member name="P:QuizzApp.Models.Result.Score">
             <summary>
             Count of right answers
             </summary>
@@ -411,28 +411,28 @@
             Id
             </summary>
         </member>
-        <member name="P:QuizzApp.Models.Test.name">
+        <member name="P:QuizzApp.Models.Test.Name">
             <summary>
             Test name
             </summary>
         </member>
-        <member name="P:QuizzApp.Models.Test.intervieweeName">
+        <member name="P:QuizzApp.Models.Test.IntervieweeName">
             <summary>
             Interviewee name
             </summary>
         </member>
-        <member name="P:QuizzApp.Models.Test.numberOfRuns">
+        <member name="P:QuizzApp.Models.Test.NumberOfRuns">
             <summary>
             Number of runs
             null = infinite
             </summary>
         </member>
-        <member name="P:QuizzApp.Models.Test.startDate">
+        <member name="P:QuizzApp.Models.Test.StartDate">
             <summary>
             Test start date
             </summary>
         </member>
-        <member name="P:QuizzApp.Models.Test.endDate">
+        <member name="P:QuizzApp.Models.Test.EndDate">
             <summary>
             Test close date
             </summary>

@@ -12,7 +12,8 @@ namespace QuizzApp.Controllers
     [Route("api/Answers")]
     public class AnswersController : Controller
     {
-        ApplicationContext db;
+        private readonly ApplicationContext db;
+
         /// <summary>
         /// Constructor for this class
         /// </summary>
@@ -21,6 +22,7 @@ namespace QuizzApp.Controllers
         {
             db = context;
         }
+
         /// <summary>
         /// Return answer by question id
         /// </summary>
@@ -31,6 +33,7 @@ namespace QuizzApp.Controllers
         {
             return db.Answers.Where(x => x.QuestionId == id).ToList();
         }
+
         /// <summary>
         /// Return answer by id
         /// </summary>
@@ -42,6 +45,7 @@ namespace QuizzApp.Controllers
             Answer Answer = db.Answers.FirstOrDefault(x => x.Id == id);
             return Answer;
         }
+
         /// <summary>
         /// Add new answer
         /// </summary>
@@ -57,8 +61,10 @@ namespace QuizzApp.Controllers
                 db.SaveChanges();
                 return Ok(Answer);
             }
+
             return BadRequest(ModelState);
         }
+
         /// <summary>
         /// Edit(update) answer
         /// </summary>
@@ -74,8 +80,10 @@ namespace QuizzApp.Controllers
                 db.SaveChanges();
                 return Ok(Answer);
             }
+
             return BadRequest(ModelState);
         }
+
         /// <summary>
         /// Delete answer by id
         /// </summary>
@@ -91,6 +99,7 @@ namespace QuizzApp.Controllers
                 db.Answers.Remove(Answer);
                 db.SaveChanges();
             }
+
             return Ok(Answer);
         }
 

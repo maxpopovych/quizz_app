@@ -12,8 +12,9 @@ namespace QuizzApp.Controllers
     [Route("api/users")]
     public class UsersController : ControllerBase
     {
-        private IUserService _userService;
-        private ApplicationContext db;
+        private readonly IUserService userService;
+        private readonly ApplicationContext db;
+
         /// <summary>
         /// Class constructor
         /// </summary>
@@ -21,9 +22,10 @@ namespace QuizzApp.Controllers
         /// <param name="context"></param>
         public UsersController(IUserService userService, ApplicationContext context)
         {
-            _userService = userService;
+            this.userService = userService;
             db = context;
         }
+
         /// <summary>
         /// Authenticate administrator
         /// </summary>
@@ -32,13 +34,15 @@ namespace QuizzApp.Controllers
         [HttpPost("authenticate")]
         public IActionResult Authenticate(AuthenticateRequest model)
         {
-            var response = _userService.Authenticate(model);
-
+            AuthenticateResponse response = userService.Authenticate(model);
             if (response == null)
+            {
                 return BadRequest(new { message = "Username or password is incorrect" });
+            }
 
             return Ok(response);
         }
+
         /// <summary>
         /// Get all users
         /// </summary>
@@ -47,7 +51,7 @@ namespace QuizzApp.Controllers
         [HttpGet]
         public IActionResult GetAll()
         {
-            var users = _userService.GetAll();
+            System.Collections.Generic.IEnumerable<User> users = userService.GetAll();
             return Ok(users);
         }
     }

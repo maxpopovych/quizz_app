@@ -12,6 +12,7 @@ namespace QuizzApp.Models
         /// </summary>
         [Required]
         public string Username { get; set; }
+
         /// <summary>
         /// Password
         /// </summary>

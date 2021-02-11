@@ -11,16 +11,17 @@ namespace QuizzApp.Models
         /// Test id
         /// </summary>
         public int TestId { get; set; }
+
         /// <summary>
         /// Name of interviewee
         /// </summary>
         public string Name { get; set; }
+
         /// <summary>
         /// Dictionary with answers
         /// Key: id of question(string)
         /// Value: id of answer(integer)
         /// </summary>
         public Dictionary<string, int> Answres { get; set; }
-
     }
 }

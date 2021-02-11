@@ -9,10 +9,12 @@
         /// Id
         /// </summary>
         public int Id { get; set; }
+
         /// <summary>
         /// Question text
         /// </summary>
-        public string question { get; set; }
+        public string Text { get; set; }
+
         /// <summary>
         /// Id of related test
         /// </summary>
