@@ -1,35 +1,42 @@
+//import { CommonModule } from '@angular/common';
 import { ErrorHandlerService } from './shared/services/error-handler.service';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router'
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
  
 import { AppComponent } from './app.component';
-//import { HomeComponent } from './home/home.component';
-import { TestComponent } from './test/test.component';
-import { CommonModule } from '@angular/common';
-  
+
+
+import { TestListComponent } from './components/test-list/test-list.component';
+import { TestDetailsComponent } from './components/test-details/test-details.component';
+import { TestCreateComponent } from './components/test-create/test-create.component';
+   
 @NgModule({
   declarations: [
     AppComponent
   ],
+  schemas: [NO_ERRORS_SCHEMA],
   imports: [
-    CommonModule,
-    ReactiveFormsModule, 
-    BrowserModule,
+    //CommonModule,
     HttpClientModule,
+    BrowserModule,
     FormsModule,
+    ReactiveFormsModule, 
     RouterModule.forRoot([
       { path: 'authentication', loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule) },
       { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: '**', redirectTo: '/404', pathMatch: 'full'},
-      { path: 'home', component: TestComponent }
+      { path: '', redirectTo: 'tests', pathMatch: 'full' },
+      { path: 'home', component: TestListComponent },
+      { path: 'tests', component: TestListComponent },
+      { path: 'tests/:id', component: TestDetailsComponent, loadChildren: () => import('./components/test.module').then(m => m.TestModule)},
+      { path: 'create', component: TestCreateComponent , loadChildren: () => import('./components/test.module').then(m => m.TestModule)}
     ])
   ],
-  providers: [
+  providers: [ 
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorHandlerService,

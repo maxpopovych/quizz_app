@@ -1,0 +1,68 @@
+<div style="width: 500px; margin: auto;">
+    <div class="submit-form">
+      <div *ngIf="!submitted">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            required
+            [(ngModel)]="test.name" 
+            name="name"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="intervieweeName">IntervieweeName</label>
+          <input
+            class="form-control"
+            id="intervieweeName"
+            required
+            [(ngModel)]="test.intervieweeName"
+            name="intervieweeName"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="startDate">startDate</label>
+          <input
+            class="form-control"
+            id="startDate"
+            required
+            [(ngModel)]="test.startDate"
+            name="startDate"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="endDate">endDate</label>
+          <input
+            class="form-control"
+            id="endDate"
+            required
+            [(ngModel)]="test.endDate"
+            name="endDate"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="numberOfRuns">numberOfRuns</label>
+          <input
+            class="form-control"
+            id="numberOfRuns"
+            required
+            [(ngModel)]="test.numberOfRuns"
+            name="numberOfRuns"
+          />
+        </div>
+        <button (click)="createTest()" class="btn btn-success">Create</button>
+      </div>
+  
+      <div *ngIf="submitted">
+        <h3>You successfully created a test!</h3>
+        <button class="btn btn-success" (click)="newTest()">New..</button>
+      </div>
+    </div>
+  </div> 
+  

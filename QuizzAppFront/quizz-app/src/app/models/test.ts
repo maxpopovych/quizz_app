@@ -1,4 +1,4 @@
-export class Test {
+/*export class Test {
     constructor(
         public Id?: number,
         public name?: string,
@@ -7,4 +7,4 @@ export class Test {
         public intervieweeName?: string,
         public numberOfRuns?: number
     ){}
-}
+}*/
