@@ -20,3 +20,5 @@ Front-end
 3. ng serve
 #
 PS: needs to fix bugs front-end)))
+
+[Documentation](https://github.com/maxpopovych/quizz_app/tree/main/doc)
