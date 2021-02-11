@@ -94,7 +94,7 @@ namespace QuizzApp
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
-            
+
         }
 
         /// <summary>
