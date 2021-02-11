@@ -4,10 +4,15 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using QuizzApp.Models;
 
-
+/// <summary>
+/// Class with authorize attribute
+/// </summary>
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
 public class AuthorizeAttribute : Attribute, IAuthorizationFilter
 {
+    /// <summary>
+    /// This method call when the user tries to authorization
+    /// </summary>
     public void OnAuthorization(AuthorizationFilterContext context)
     {
         var user = (User)context.HttpContext.Items["User"];

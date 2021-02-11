@@ -6,15 +6,27 @@ using QuizzApp.Models;
 
 namespace QuizzApp.Controllers
 {
+    /// <summary>
+    /// Result controller class
+    /// Providing getting a result for admins
+    /// </summary>
     [ApiController]
     [Route("test")]
     public class ResultController : Controller
     {
         ApplicationContext db;
+        /// <summary>
+        /// Class constructor
+        /// </summary>
+        /// <param name="context"></param>
         public ResultController(ApplicationContext context)
         {
             db = context;
         }
+        /// <summary>
+        /// Get all results
+        /// </summary>
+        /// <returns></returns>
         [Authorize]
         [HttpGet]
         public IEnumerable<Result> Get()
@@ -22,6 +34,11 @@ namespace QuizzApp.Controllers
             var result = db.Results;
             return result;
         }
+        /// <summary>
+        /// Get result by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpGet("{id}")]
         public Result Get(int id)
@@ -29,7 +46,11 @@ namespace QuizzApp.Controllers
             var result = db.Results.FirstOrDefault(x => x.Id == id);
             return result;
         }
-
+        /// <summary>
+        /// Get all user choices from result by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpGet("user/{id}")]
         public IEnumerable<UserChoice> GetUserChoiseByResultId(int id)
@@ -37,6 +58,11 @@ namespace QuizzApp.Controllers
             var result = db.UserChoices.Where(x => x.ResultId == id).DefaultIfEmpty();
             return result;
         }
+        /// <summary>
+        /// Add result
+        /// </summary>
+        /// <param name="result"></param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult Post(SetResultRequest result)
         {

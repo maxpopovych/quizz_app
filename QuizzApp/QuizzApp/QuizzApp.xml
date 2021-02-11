@@ -1,0 +1,553 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>QuizzApp</name>
+    </assembly>
+    <members>
+        <member name="T:QuizzApp.Controllers.AnswersController">
+            <summary>
+            Answer controller class
+            </summary>
+        </member>
+        <member name="M:QuizzApp.Controllers.AnswersController.#ctor(QuizzApp.Models.ApplicationContext)">
+            <summary>
+            Constructor for this class
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:QuizzApp.Controllers.AnswersController.GetFromQuestion(System.Int32)">
+            <summary>
+            Return answer by question id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizzApp.Controllers.AnswersController.Get(System.Int32)">
+            <summary>
+            Return answer by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizzApp.Controllers.AnswersController.Post(QuizzApp.Models.Answer)">
+            <summary>
+            Add new answer
+            </summary>
+            <param name="Answer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizzApp.Controllers.AnswersController.Put(QuizzApp.Models.Answer)">
+            <summary>
+            Edit(update) answer
+            </summary>
+            <param name="Answer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizzApp.Controllers.AnswersController.Delete(System.Int32)">
+            <summary>
+            Delete answer by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:QuizzApp.Controllers.QuestionsController">
+            <summary>
+            Question controller class
+            </summary>
+        </member>
+        <member name="M:QuizzApp.Controllers.QuestionsController.#ctor(QuizzApp.Models.ApplicationContext)">
+            <summary>
+            Class constructor
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:QuizzApp.Controllers.QuestionsController.GetFromTest(System.Int32)">
+            <summary>
+            Get questions by test id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizzApp.Controllers.QuestionsController.Get(System.Int32)">
+            <summary>
+            Get question by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizzApp.Controllers.QuestionsController.Post(QuizzApp.Models.Question)">
+            <summary>
+            Add new question
+            </summary>
+            <param name="Question"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizzApp.Controllers.QuestionsController.Put(QuizzApp.Models.Question)">
+            <summary>
+            Edit(update) question
+            </summary>
+            <param name="Question"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizzApp.Controllers.QuestionsController.Delete(System.Int32)">
+            <summary>
+            Delete question by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:QuizzApp.Controllers.ResultController">
+            <summary>
+            Result controller class
+            Providing getting a result for admins
+            </summary>
+        </member>
+        <member name="M:QuizzApp.Controllers.ResultController.#ctor(QuizzApp.Models.ApplicationContext)">
+            <summary>
+            Class constructor
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:QuizzApp.Controllers.ResultController.Get">
+            <summary>
+            Get all results
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:QuizzApp.Controllers.ResultController.Get(System.Int32)">
+            <summary>
+            Get result by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizzApp.Controllers.ResultController.GetUserChoiseByResultId(System.Int32)">
+            <summary>
+            Get all user choices from result by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizzApp.Controllers.ResultController.Post(QuizzApp.Models.SetResultRequest)">
+            <summary>
+            Add result
+            </summary>
+            <param name="result"></param>
+            <returns></returns>
+        </member>
+        <member name="T:QuizzApp.Controllers.TestController">
+            <summary>
+            Test controller
+            </summary>
+        </member>
+        <member name="M:QuizzApp.Controllers.TestController.#ctor(QuizzApp.Models.ApplicationContext)">
+            <summary>
+            Class constructor
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="M:QuizzApp.Controllers.TestController.Get">
+            <summary>
+            Get all tests
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:QuizzApp.Controllers.TestController.Get(System.Int32)">
+            <summary>
+            Get test by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizzApp.Controllers.TestController.Post(QuizzApp.Models.Test)">
+            <summary>
+            Add test
+            </summary>
+            <param name="Test"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizzApp.Controllers.TestController.Put(QuizzApp.Models.Test)">
+            <summary>
+            Edit(update) test 
+            </summary>
+            <param name="Test"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizzApp.Controllers.TestController.Delete(System.Int32)">
+            <summary>
+            Delete test by id
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:QuizzApp.Controllers.UsersController">
+            <summary>
+            User controller
+            Login logic for admins
+            </summary>
+        </member>
+        <member name="M:QuizzApp.Controllers.UsersController.#ctor(QuizzApp.Services.IUserService,QuizzApp.Models.ApplicationContext)">
+            <summary>
+            Class constructor
+            </summary>
+            <param name="userService"></param>
+            <param name="context"></param>
+        </member>
+        <member name="M:QuizzApp.Controllers.UsersController.Authenticate(QuizzApp.Models.AuthenticateRequest)">
+            <summary>
+            Authenticate administrator
+            </summary>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:QuizzApp.Controllers.UsersController.GetAll">
+            <summary>
+            Get all users
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:QuizzApp.Helpers.AppSettings">
+            <summary>
+            This class contains secret key for JWT authentication.
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Helpers.AppSettings.Secret">
+            <summary>
+            Secret JWT key.
+            </summary>
+        </member>
+        <member name="T:QuizzApp.Models.Answer">
+            <summary>
+            Answer model
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.Answer.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.Answer.QuestionId">
+            <summary>
+            Id of related question
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.Answer.text">
+            <summary>
+            Text of answer
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.Answer.isTrue">
+            <summary>
+            Is answer true
+            </summary>
+        </member>
+        <member name="T:QuizzApp.Models.ApplicationContext">
+            <summary>
+            This class provide connection with DB
+            </summary>
+        </member>
+        <member name="M:QuizzApp.Models.ApplicationContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{QuizzApp.Models.ApplicationContext})">
+            <summary>
+            Class constructor
+            </summary>
+            <param name="options"></param>
+        </member>
+        <member name="P:QuizzApp.Models.ApplicationContext.Tests">
+            <summary>
+            Tests table
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.ApplicationContext.Questions">
+            <summary>
+            Questions table
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.ApplicationContext.Answers">
+            <summary>
+            Answers table
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.ApplicationContext.Results">
+            <summary>
+            Results table
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.ApplicationContext.Users">
+            <summary>
+            Users table
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.ApplicationContext.UserChoices">
+            <summary>
+            User choices table
+            </summary>
+        </member>
+        <member name="T:QuizzApp.Models.AuthenticateRequest">
+            <summary>
+            This class used for authenticate request
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.AuthenticateRequest.Username">
+            <summary>
+            Username
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.AuthenticateRequest.Password">
+            <summary>
+            Password
+            </summary>
+        </member>
+        <member name="T:QuizzApp.Models.AuthenticateResponse">
+            <summary>
+            This class used for authenticate response
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.AuthenticateResponse.Id">
+            <summary>
+            User id
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.AuthenticateResponse.FirstName">
+            <summary>
+            User firstname
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.AuthenticateResponse.LastName">
+            <summary>
+            User lastname
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.AuthenticateResponse.Username">
+            <summary>
+            Username
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.AuthenticateResponse.Token">
+            <summary>
+            Token for authentication
+            </summary>
+        </member>
+        <member name="M:QuizzApp.Models.AuthenticateResponse.#ctor(QuizzApp.Models.User,System.String)">
+            <summary>
+            Class constructor
+            </summary>
+            <param name="user"></param>
+            <param name="token"></param>
+        </member>
+        <member name="T:QuizzApp.Models.Question">
+            <summary>
+            Question model
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.Question.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.Question.question">
+            <summary>
+            Question text
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.Question.TestId">
+            <summary>
+            Id of related test
+            </summary>
+        </member>
+        <member name="T:QuizzApp.Models.Result">
+            <summary>
+            Result model
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.Result.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.Result.intervieweeName">
+            <summary>
+            Interviewee name
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.Result.TestId">
+            <summary>
+            Id of related test
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.Result.score">
+            <summary>
+            Count of right answers
+            </summary>
+        </member>
+        <member name="T:QuizzApp.Models.SetResultRequest">
+            <summary>
+            This class helps to get answers from the interviewee
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.SetResultRequest.TestId">
+            <summary>
+            Test id
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.SetResultRequest.Name">
+            <summary>
+            Name of interviewee
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.SetResultRequest.Answres">
+            <summary>
+            Dictionary with answers
+            Key: id of question(string)
+            Value: id of answer(integer)
+            </summary>
+        </member>
+        <member name="T:QuizzApp.Models.Test">
+            <summary>
+            Test model
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.Test.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.Test.name">
+            <summary>
+            Test name
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.Test.intervieweeName">
+            <summary>
+            Interviewee name
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.Test.numberOfRuns">
+            <summary>
+            Number of runs
+            null = infinite
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.Test.startDate">
+            <summary>
+            Test start date
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.Test.endDate">
+            <summary>
+            Test close date
+            </summary>
+        </member>
+        <member name="T:QuizzApp.Models.User">
+            <summary>
+            User modelN
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.User.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.User.FirstName">
+            <summary>
+            Firstname
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.User.LastName">
+            <summary>
+            Lastname
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.User.Username">
+            <summary>
+            Username
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.User.Password">
+            <summary>
+            Password
+            </summary>
+        </member>
+        <member name="T:QuizzApp.Models.UserChoice">
+            <summary>
+            User choice model
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.UserChoice.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.UserChoice.ResultId">
+            <summary>
+            Related result id
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.UserChoice.QuestionId">
+            <summary>
+            Related question id
+            </summary>
+        </member>
+        <member name="P:QuizzApp.Models.UserChoice.AnswerId">
+            <summary>
+            Related answer id
+            </summary>
+        </member>
+        <member name="T:QuizzApp.Program">
+            <summary>
+            Main class
+            </summary>
+        </member>
+        <member name="M:QuizzApp.Program.Main(System.String[])">
+            <summary>
+            Main method
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:QuizzApp.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            This method create host builder
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:QuizzApp.Startup">
+            <summary>
+            Startup class
+            </summary>
+        </member>
+        <member name="M:QuizzApp.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Class constructor
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:QuizzApp.Startup.Configuration">
+            <summary>
+            Configuration
+            </summary>
+        </member>
+        <member name="M:QuizzApp.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            This method gets called by the runtime. Use this method to add services to the container.
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:QuizzApp.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+        <member name="T:AuthorizeAttribute">
+            <summary>
+            Class with authorize attribute
+            </summary>
+        </member>
+        <member name="M:AuthorizeAttribute.OnAuthorization(Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext)">
+            <summary>
+            This method call when the user tries to authorization
+            </summary>
+        </member>
+    </members>
+</doc>

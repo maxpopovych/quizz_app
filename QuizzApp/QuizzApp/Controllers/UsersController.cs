@@ -4,19 +4,31 @@ using QuizzApp.Services;
 
 namespace QuizzApp.Controllers
 {
+    /// <summary>
+    /// User controller
+    /// Login logic for admins
+    /// </summary>
     [ApiController]
     [Route("api/users")]
     public class UsersController : ControllerBase
     {
         private IUserService _userService;
         private ApplicationContext db;
-
+        /// <summary>
+        /// Class constructor
+        /// </summary>
+        /// <param name="userService"></param>
+        /// <param name="context"></param>
         public UsersController(IUserService userService, ApplicationContext context)
         {
             _userService = userService;
             db = context;
         }
-
+        /// <summary>
+        /// Authenticate administrator
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost("authenticate")]
         public IActionResult Authenticate(AuthenticateRequest model)
         {
@@ -27,7 +39,10 @@ namespace QuizzApp.Controllers
 
             return Ok(response);
         }
-
+        /// <summary>
+        /// Get all users
+        /// </summary>
+        /// <returns></returns>
         [Authorize]
         [HttpGet]
         public IActionResult GetAll()
