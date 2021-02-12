@@ -29,7 +29,7 @@ export class TestService {
     )
   }
    
-  create(test: any): Observable<Test> {
+  create(test: Test): Observable<Test> {
     return this.httpClient.post<Test>(this.apiURL + '/tests/', JSON.stringify(test), this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
@@ -43,7 +43,7 @@ export class TestService {
     )
   }
    
-  update(test: any): Observable<Test> {
+  update(test: Test): Observable<Test> {
     return this.httpClient.put<Test>(this.apiURL + '/tests/', JSON.stringify(test), this.httpOptions)
     .pipe(
       catchError(this.errorHandler)

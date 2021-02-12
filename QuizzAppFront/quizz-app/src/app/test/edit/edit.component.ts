@@ -23,6 +23,7 @@ export class EditComponent implements OnInit {
   
   ngOnInit(): void {
     this.id = this.route.snapshot.params['testId'];
+    
     this.testService.find(this.id).subscribe((data: Test)=>{
       this.test = data;
     });
@@ -41,8 +42,14 @@ export class EditComponent implements OnInit {
   }
      
   submit(){
-    console.log(this.form.value);
-    this.testService.update(this.form.value).subscribe(res => {
+    this.test.name = this.form.controls['name'].value;
+    this.test.intervieweeName = this.form.controls['intervieweeName'].value;
+    this.test.numberOfRuns = this.form.controls['numberOfRuns'].value;
+    this.test.startDate = this.form.controls['startDate'].value;
+    this.test.endDate = this.form.controls['endDate'].value;
+    
+    console.log(this.test);
+    this.testService.update(this.test).subscribe(res => {
          console.log('Test updated successfully!');
          this.router.navigateByUrl('test/index');
     })
