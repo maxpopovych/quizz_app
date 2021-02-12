@@ -9,9 +9,9 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
+        CommonModule,
         RouterTestingModule,
-        FormsModule,
-        CommonModule
+        FormsModule
       ],
       declarations: [
         AppComponent
