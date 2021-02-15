@@ -12,16 +12,24 @@ import { TestModule } from './test/test.module';
 import { IndexComponentT } from './test/index/index.component';
 import { IndexComponentQ } from './question/index/index.component';
 import { ViewComponentQ } from './question/view/view.component';
-import { EditComponent } from './question/edit/edit.component';
+import { EditComponentQ } from './question/edit/edit.component';
 import { CreateComponentQ } from './question/create/create.component';
 import { CommonModule } from '@angular/common';
+import { CreateComponentA } from './answer/create/create.component';
+import { IndexComponentA } from './answer/index/index.component';
+import { ViewComponentA } from './answer/view/view.component';
+import { EditComponent } from './answer/edit/edit.component';
 @NgModule({
   declarations: [
     AppComponent,
     IndexComponentQ,
     ViewComponentQ,
+    EditComponentQ,
+    CreateComponentQ,
+    IndexComponentA,
+    ViewComponentA,
     EditComponent,
-    CreateComponentQ
+    CreateComponentA
   ],
   schemas: [NO_ERRORS_SCHEMA],
   imports: [
@@ -39,7 +47,12 @@ import { CommonModule } from '@angular/common';
       { path: 'question/:questionId/index', component: IndexComponentQ },
       { path: 'question/:questionId/view', component: ViewComponentQ },
       { path: 'question/:questionId/create', component: CreateComponentQ },
-      { path: 'question/:questionId/edit', component: EditComponent },
+      { path: 'question/:questionId/edit', component: EditComponentQ },
+      { path: 'answer/:answerId', redirectTo: 'answer/:answerId/index', pathMatch: 'full' },
+      { path: 'answer/:answerId/index', component: IndexComponentA },
+      { path: 'answer/:answerId/view', component: ViewComponentA },
+      { path: 'answer/:answerId/create', component: CreateComponentA },
+      { path: 'answer/:answerId/edit', component: EditComponent },
       { path: '**', redirectTo: '/404', pathMatch: 'full'},
       { path: '', redirectTo: 'tests', pathMatch: 'full' },
     ])

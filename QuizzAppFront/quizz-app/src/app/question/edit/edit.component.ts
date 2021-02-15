@@ -9,7 +9,7 @@ import { FormGroup, FormControl, Validators} from '@angular/forms';
   templateUrl: './edit.component.html',
   styleUrls: ['./edit.component.css']
 })
-export class EditComponent implements OnInit {
+export class EditComponentQ implements OnInit {
     
   id!: number;
   question!: Question;

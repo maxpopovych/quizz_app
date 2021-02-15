@@ -1,6 +1,8 @@
 <div class="container">
-    <h1>Questions</h1>
+    <h1>Test {{ id }} questions</h1>
   
+    <a href="#" routerLink="" class="btn btn-primary">Back</a>
+
     <a href="#" [routerLink]="['/question/', id, 'create']" class="btn btn-success">Create New Question</a>
     
     <table class="table table-bordered">
@@ -17,6 +19,7 @@
         <td>
           <a href="#" [routerLink]="['/question/', question.id, 'view']" class="btn btn-info">View</a>
           <a href="#" [routerLink]="['/question/', question.id, 'edit']" class="btn btn-primary">Edit</a>
+          <a href="#" [routerLink]="['/answer/', question.id]" class="btn btn-primary">Answers</a>
           <button type="button" (click)="deleteQuestion(question.id)" class="btn btn-danger">Delete</button>
         </td>
       </tr>
