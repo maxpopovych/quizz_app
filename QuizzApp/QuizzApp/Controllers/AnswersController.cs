@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using QuizzApp.Models;
@@ -24,14 +25,21 @@ namespace QuizzApp.Controllers
         }
 
         /// <summary>
-        /// Return answer by question id
+        /// Return answers by question id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet("question/{id}")]
         public IEnumerable<Answer> GetFromQuestion(int id)
         {
-            return db.Answers.Where(x => x.QuestionId == id).ToList();
+            try
+            {
+                return db.Answers.Where(x => x.QuestionId == id).ToList();
+            }
+            catch (Exception)
+            {
+                return new List<Answer>();
+            }
         }
 
         /// <summary>
