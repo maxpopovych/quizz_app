@@ -47,8 +47,6 @@ export class EditComponent implements OnInit {
     this.test.numberOfRuns = this.form.controls['numberOfRuns'].value;
     this.test.startDate = this.form.controls['startDate'].value;
     this.test.endDate = this.form.controls['endDate'].value;
-    
-    console.log(this.test);
     this.testService.update(this.test).subscribe(res => {
          console.log('Test updated successfully!');
          this.router.navigateByUrl('test/index');

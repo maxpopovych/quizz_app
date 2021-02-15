@@ -8,7 +8,7 @@ import { TestService } from '../test.service';
   templateUrl: './index.component.html',
   styleUrls: ['./index.component.css']
 })
-export class IndexComponent implements OnInit {
+export class IndexComponentT implements OnInit {
 
   tests!: Test[];
   

@@ -1,29 +1,29 @@
 import { Component, OnInit } from '@angular/core';
-import { TestService } from '../test.service';
+import { QuestionService } from '../question.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Test } from '../test';
+import { Question } from '../question';
   
 @Component({
   selector: 'app-view',
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.css']
 })
-export class ViewComponentT implements OnInit {
+export class ViewComponentQ implements OnInit {
    
   id!: number;
-  test!: Test;
+  question!: Question;
    
   constructor(
-    public testService: TestService,
+    public questionService: QuestionService,
     private route: ActivatedRoute,
     private router: Router
    ) { }
   
   ngOnInit(): void {
-    this.id = this.route.snapshot.params['testId'];
+    this.id = this.route.snapshot.params['questionId'];
       
-    this.testService.find(this.id).subscribe((data: Test)=>{
-      this.test = data;
+    this.questionService.find(this.id).subscribe((data: Question)=>{
+      this.question = data;
     });
   }
   

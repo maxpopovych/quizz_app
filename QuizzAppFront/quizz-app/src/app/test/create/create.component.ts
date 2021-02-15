@@ -8,7 +8,7 @@ import { FormGroup, FormControl, Validators} from '@angular/forms';
   templateUrl: './create.component.html',
   styleUrls: ['./create.component.css']
 })
-export class CreateComponent implements OnInit {
+export class CreateComponentT implements OnInit {
   
   form!: FormGroup;
    
