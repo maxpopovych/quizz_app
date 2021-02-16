@@ -34,4 +34,11 @@ export class IndexComponentA implements OnInit {
          console.log('Answer deleted successfully!');
     })
   }
+
+  setTrue(id: any){
+    this.answerService.setTrue(id).subscribe(res => {
+         this.answers = this.answers.filter(item => item.id !== id);
+         console.log('Answer set true successfully!');
+    })
+  }
 }

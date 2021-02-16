@@ -20,6 +20,20 @@ export class IndexComponentT implements OnInit {
       console.log(this.tests);
     })  
   }
+
+  copyLink(id: number){
+    const selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = 'http://localhost:4200/passTest/'+id;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+  }
   
   deleteTest(id: any){
     this.testService.delete(id).subscribe(res => {

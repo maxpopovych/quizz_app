@@ -111,5 +111,31 @@ namespace QuizzApp.Controllers
             return Ok(Answer);
         }
 
+        /// <summary>
+        /// Set right answer by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [Authorize]
+        [HttpPut("setTrue/{id}")]
+        public IActionResult SetTrue(int id)
+        {
+            Answer Answer = db.Answers.FirstOrDefault(x => x.Id == id);
+            if (Answer != null)
+            {
+                foreach (var ans in db.Answers.Where(x => x.QuestionId == Answer.QuestionId))
+                {
+                    ans.isTrue = false;
+                    db.Update(ans);
+                }
+
+                Answer.isTrue = true;
+                db.Update(Answer);
+                db.SaveChanges();
+            }
+
+            return Ok(Answer);
+        }
+
     }
 }

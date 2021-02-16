@@ -22,6 +22,6 @@ namespace QuizzApp.Models
         /// Key: id of question(string)
         /// Value: id of answer(integer)
         /// </summary>
-        public Dictionary<string, int> Answres { get; set; }
+        public Dictionary<string, string> Answres { get; set; }
     }
 }

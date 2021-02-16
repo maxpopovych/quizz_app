@@ -56,7 +56,14 @@ export class AnswerService {
       catchError(this.errorHandler)
     )
   }
-    
+   
+  setTrue(id:number){
+    console.log(this.httpOptions);
+    return this.httpClient.put<Answer>(this.apiURL +'setTrue/'+ id, this.httpClient)
+    .pipe(
+      catchError(this.errorHandler)
+    )
+  }
   
   errorHandler(error:any) {
     let errorMessage = '';

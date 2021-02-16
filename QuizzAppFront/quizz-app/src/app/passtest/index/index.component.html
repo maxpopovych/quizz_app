@@ -1,0 +1,27 @@
+<div class="container">
+    <h1>Test</h1>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div>
+            <span>Your name: {{test.intervieweeName }}</span>
+        </div>
+        <h5>Questions</h5>
+
+        <div *ngFor="let question of questions">
+            <div>
+                <span>{{question.text}}</span>
+                <div>
+                    <div *ngFor="let ans of question.answers">
+                        <input 
+                        formControlName={{question.text}}
+                        type="radio" 
+                        value={{ans.text}} 
+                        name={{question.text}}/>
+                        <span>{{ans.text}}</span>
+                    </div>
+                </div>  
+            </div>
+        </div>
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+    </form>
+ </div>

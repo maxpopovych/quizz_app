@@ -61,7 +61,7 @@ namespace QuizzApp.Controllers
             IQueryable<UserChoice> result = db.UserChoices.Where(x => x.ResultId == id).DefaultIfEmpty();
             return result;
         }
-
+        /*
         /// <summary>
         /// Add result
         /// </summary>
@@ -93,6 +93,40 @@ namespace QuizzApp.Controllers
             }
 
             return BadRequest(ModelState);
+        }*/
+
+        /// <summary>
+        /// Add result
+        /// </summary>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        [HttpPost]
+        public IActionResult Post(SetResultRequest result)
+        {
+            if (ModelState.IsValid)
+            {
+                Result res = new Result { IntervieweeName = result.Name, TestId = result.TestId, Score = 0 };
+                db.Results.Add(res);
+                db.SaveChanges();
+                int score = 0;
+                foreach (KeyValuePair<string, string> ans in result.Answres)
+                {
+                    UserChoice userchoise = new UserChoice { ResultId = res.Id, QuestionId = db.Questions.FirstOrDefault(x => x.Text == ans.Key).Id, AnswerId = db.Answers.FirstOrDefault(x => x.text == ans.Value).Id };
+                    db.UserChoices.Add(userchoise);
+                    if (db.Answers.FirstOrDefault(x => x.text == ans.Value).isTrue)
+                    {
+                        ++score;
+                    }
+
+                }
+                res.Score = score;
+                db.Results.Update(res);
+                db.SaveChanges();
+                return Ok(result);
+            }
+
+            return BadRequest(ModelState);
         }
+
     }
 }

@@ -29,8 +29,7 @@ export class EditComponent implements OnInit {
     });
     
     this.form = new FormGroup({
-      text: new FormControl('', [Validators.required]),
-      isTrue: new FormControl('', Validators.required)
+      text: new FormControl('', [Validators.required])
     });
   }
    

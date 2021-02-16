@@ -18,18 +18,6 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="isTrue">Is true</label>
-            <input 
-                formControlName="isTrue"
-                id="isTrue" 
-                type="radio" 
-                class="form-control"/>
-            <div *ngIf="f.isTrue.touched && f.isTrue.invalid" class="alert alert-danger">
-                <!-- <div *ngIf="f.text.errors.required">Name is required.</div> -->
-            </div>
-        </div>
-
         <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Update</button>
     </form>
 </div>

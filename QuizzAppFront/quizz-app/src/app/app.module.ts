@@ -19,6 +19,8 @@ import { CreateComponentA } from './answer/create/create.component';
 import { IndexComponentA } from './answer/index/index.component';
 import { ViewComponentA } from './answer/view/view.component';
 import { EditComponent } from './answer/edit/edit.component';
+import { IndexComponentP } from './passtest/index/index.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +31,9 @@ import { EditComponent } from './answer/edit/edit.component';
     IndexComponentA,
     ViewComponentA,
     EditComponent,
-    CreateComponentA
+    CreateComponentA,
+    IndexComponentP
+    
   ],
   schemas: [NO_ERRORS_SCHEMA],
   imports: [
@@ -53,6 +57,7 @@ import { EditComponent } from './answer/edit/edit.component';
       { path: 'answer/:answerId/view', component: ViewComponentA },
       { path: 'answer/:answerId/create', component: CreateComponentA },
       { path: 'answer/:answerId/edit', component: EditComponent },
+      { path: 'passTest/:testId', component: IndexComponentP },
       { path: '**', redirectTo: '/404', pathMatch: 'full'},
       { path: '', redirectTo: 'tests', pathMatch: 'full' },
     ])

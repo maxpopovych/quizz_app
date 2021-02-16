@@ -23,11 +23,10 @@ export class CreateComponentA implements OnInit {
   
   ngOnInit(): void {
     this.form = new FormGroup({
-      text: new FormControl('', Validators.required),
-      isTrue: new FormControl('', Validators.required),
+      text: new FormControl('', Validators.required)
     });
     this.id = this.route.snapshot.params['answerId'];
-    this.answer = {id:0,text:'',questionId:this.id,isTrue:false};
+    this.answer = {id:0,text:'',questionId:this.id};
   }
    
   get f(){
