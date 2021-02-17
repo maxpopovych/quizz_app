@@ -6,10 +6,11 @@ import { IndexComponentP } from './index/index.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { SuccessComponent } from './success/success.component';
 
 
 @NgModule({
-  declarations: [IndexComponentP],
+  declarations: [IndexComponentP, SuccessComponent],
   imports: [
     CommonModule,
     PasstestRoutingModule,

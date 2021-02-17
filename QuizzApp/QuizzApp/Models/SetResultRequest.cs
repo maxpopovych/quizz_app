@@ -10,7 +10,7 @@ namespace QuizzApp.Models
         /// <summary>
         /// Test id
         /// </summary>
-        public int TestId { get; set; }
+        public string TestId { get; set; }
 
         /// <summary>
         /// Name of interviewee
@@ -22,6 +22,6 @@ namespace QuizzApp.Models
         /// Key: id of question(string)
         /// Value: id of answer(integer)
         /// </summary>
-        public Dictionary<string, string> Answres { get; set; }
+        public Dictionary<string, string> Answers { get; set; }
     }
 }

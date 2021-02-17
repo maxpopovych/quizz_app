@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 
 import {  Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+
 import { SendResult } from './send-result';
 
 @Injectable({
@@ -23,6 +24,7 @@ export class PasstestService {
 
   
   create(answer : SendResult): Observable<SendResult> {
+    console.log(JSON.stringify(answer));
     return this.httpClient.post<SendResult>(this.apiURL, JSON.stringify(answer), this.httpOptions)
     .pipe(
       catchError(this.errorHandler)

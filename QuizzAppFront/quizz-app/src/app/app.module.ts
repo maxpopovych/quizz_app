@@ -20,6 +20,7 @@ import { IndexComponentA } from './answer/index/index.component';
 import { ViewComponentA } from './answer/view/view.component';
 import { EditComponent } from './answer/edit/edit.component';
 import { IndexComponentP } from './passtest/index/index.component';
+import { SuccessComponent } from './passtest/success/success.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { IndexComponentP } from './passtest/index/index.component';
       { path: 'answer/:answerId/create', component: CreateComponentA },
       { path: 'answer/:answerId/edit', component: EditComponent },
       { path: 'passTest/:testId', component: IndexComponentP },
+      { path: 'success', component: SuccessComponent },
       { path: '**', redirectTo: '/404', pathMatch: 'full'},
       { path: '', redirectTo: 'tests', pathMatch: 'full' },
     ])

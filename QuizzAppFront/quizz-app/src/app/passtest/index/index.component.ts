@@ -49,7 +49,6 @@ export class IndexComponentP implements OnInit {
           this.form.addControl(element.text,new FormControl('', Validators.required));
       });
 
-      //console.log(data);
     });
         
   });
@@ -59,7 +58,9 @@ export class IndexComponentP implements OnInit {
     this.send.name = this.test.intervieweeName ?? '';
     this.send.testId = this.id;
     this.send.answers = this.form.value;
-    console.log(this.send);
-    this.sendService.create(this.send);
+    this.sendService.create(this.send).subscribe(res => {
+      console.log('Result send Successfully!');
+      //this.router.navigateByUrl('answer/'+this.id+'/index');
+ });
   }
 }
