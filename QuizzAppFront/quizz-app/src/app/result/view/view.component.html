@@ -1,0 +1,24 @@
+<div class="container">
+    <h1>Results</h1>
+  
+    <a href="#" routerLink="/result/" class="btn btn-primary">Back</a>
+
+    <table class="table table-bordered">
+      <tr>
+        <th>ID</th>
+        <th>Result id</th>
+        <th>Question Id</th>
+        <th>Question</th>
+        <th>Answer Id</th>
+        <th>Answer</th>
+      </tr>
+      <tr *ngFor="let userchoice of userchoices;let i = index">
+        <td>{{ userchoice.id }}</td>
+        <td>{{ userchoice.resultId }}</td>
+        <td>{{ userchoice.questionId }}</td>
+        <td></td>
+        <td>{{ userchoice.answerId }}</td>
+        <td></td>
+      </tr>
+    </table>
+ </div>

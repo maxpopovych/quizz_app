@@ -44,9 +44,9 @@ namespace QuizzApp.Controllers
         /// <returns></returns>
         [Authorize]
         [HttpGet("{id}")]
-        public Result Get(int id)
+        public IEnumerable<Result> Get(int id)
         {
-            Result result = db.Results.FirstOrDefault(x => x.Id == id);
+            IQueryable<Result> result = db.Results.Where(x => x.Id == id).DefaultIfEmpty();
             return result;
         }
 

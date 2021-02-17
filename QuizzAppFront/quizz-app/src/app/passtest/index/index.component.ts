@@ -60,7 +60,7 @@ export class IndexComponentP implements OnInit {
     this.send.answers = this.form.value;
     this.sendService.create(this.send).subscribe(res => {
       console.log('Result send Successfully!');
-      //this.router.navigateByUrl('answer/'+this.id+'/index');
+      this.router.navigateByUrl('/success');
  });
   }
 }
