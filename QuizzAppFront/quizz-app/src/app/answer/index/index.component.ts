@@ -3,6 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Answer } from '../answer';
 import { AnswerService } from '../answer.service';
+import { Location } from '@angular/common'
+
+
 
 @Component({
   selector: 'app-index',
@@ -17,7 +20,8 @@ export class IndexComponentA implements OnInit {
   constructor(
     public answerService: AnswerService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private location: Location
     ) { }
   
   ngOnInit(): void {
@@ -35,10 +39,16 @@ export class IndexComponentA implements OnInit {
     })
   }
 
-  setTrue(id: any){
+  setTrue(id: number){
     this.answerService.setTrue(id).subscribe(res => {
          this.answers = this.answers.filter(item => item.id !== id);
          console.log('Answer set true successfully!');
+         console.log(res);
     })
   }
+
+  back(): void {
+    this.location.back()
+  }
+  
 }

@@ -1,7 +1,9 @@
 <div class="container">
     <h1>Question {{ id }} answers</h1>
   
-    <a href="#" [routerLink]="['/question/', id, 'index']" class="btn btn-primary">Back</a>
+    <!-- <a href="#" [routerLink]="['/question/', id, 'index']" class="btn btn-primary">Back</a> -->
+
+    <button type="button" (click)="back()" class="btn btn-primary">Back</button>
 
     <a href="#" [routerLink]="['/answer/', id, 'create']" class="btn btn-success">Create New Answer</a>
     
