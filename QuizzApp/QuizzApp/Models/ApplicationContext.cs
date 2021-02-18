@@ -3,7 +3,7 @@
 namespace QuizzApp.Models
 {
     /// <summary>
-    /// This class provide connection with DB
+    /// This class provides connection with DB
     /// </summary>
     public class ApplicationContext : DbContext
     {

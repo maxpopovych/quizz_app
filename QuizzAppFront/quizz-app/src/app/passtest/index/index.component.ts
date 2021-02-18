@@ -7,6 +7,7 @@ import { Question } from 'src/app/question/question';
 import { QuestionService } from 'src/app/question/question.service';
 import { Test } from 'src/app/test/test';
 import { TestService } from 'src/app/test/test.service';
+import { AccessTestService } from '../access-test.service';
 import { Passtest } from '../passtest';
 import { PasstestService } from '../passtest.service';
 import { SendResult } from '../send-result';
@@ -26,6 +27,7 @@ export class IndexComponentP implements OnInit {
   send!:SendResult;
 
   constructor(
+    public accesstestService: AccessTestService,
     public answerService: AnswerService,
     public testService: TestService,
     public questionService: QuestionService,
@@ -38,8 +40,10 @@ export class IndexComponentP implements OnInit {
     this.form = new FormGroup({
       
     });
-
     this.id = this.route.snapshot.params['testId'];
+
+    this.accesstestService.start(this.id);
+
     this.testService.find(this.id).subscribe(x=> this.test = x);
     this.questionService.getAll(this.id).subscribe((data: Question[])=>{
       this.questions = data; 
@@ -54,6 +58,9 @@ export class IndexComponentP implements OnInit {
   });
   }
   submit():void {
+
+    this.accesstestService.end(this.id);
+
     this.send = {testId:0,name:'',answers:{}}
     this.send.name = this.test.intervieweeName ?? '';
     this.send.testId = this.id;

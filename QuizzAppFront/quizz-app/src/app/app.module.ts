@@ -23,6 +23,7 @@ import { IndexComponentP } from './passtest/index/index.component';
 import { SuccessComponent } from './passtest/success/success.component';
 import { IndexComponentR } from './result/index/index.component';
 import { ViewComponentR } from './result/view/view.component';
+import { NoAccessComponent } from './passtest/no-access/no-access.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { ViewComponentR } from './result/view/view.component';
     CreateComponentA,
     IndexComponentP,
     IndexComponentR,
-    ViewComponentR
+    ViewComponentR,
+    NoAccessComponent
     
   ],
   schemas: [NO_ERRORS_SCHEMA],
@@ -64,6 +66,7 @@ import { ViewComponentR } from './result/view/view.component';
       { path: 'answer/:answerId/edit', component: EditComponent },
       { path: 'passTest/:testId', component: IndexComponentP },
       { path: 'success', component: SuccessComponent },
+      { path: 'noAccess', component: NoAccessComponent },
       { path: 'result', component: IndexComponentR },
       { path: 'result/:resultId/view', component: ViewComponentR },
       { path: '**', redirectTo: '/404', pathMatch: 'full'},

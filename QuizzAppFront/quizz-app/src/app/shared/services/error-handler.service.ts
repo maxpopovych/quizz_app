@@ -25,6 +25,9 @@ export class ErrorHandlerService implements HttpInterceptor {
     if(error.status === 404) {
       return this.handleNotFound(error);
     }
+    else if(error.status === 400) {
+      return this.handleNoAccesToTest(error);
+    }
     else if(error.status === 401) {
       return this.handleUnauthorized(error);
     }
@@ -35,10 +38,18 @@ export class ErrorHandlerService implements HttpInterceptor {
     if(this._router.url === '/authentication/login') {
       return 'Authentication failed. Wrong Username or Password';
     }
+    else if(this._router.url.includes('passTest')){
+      return this.handleNoAccesToTest(error);
+    }
     else {
       this._router.navigate(['/authentication/login']);
       return error.message;
     }
+  }
+
+  private handleNoAccesToTest = (error: HttpErrorResponse): string => {
+    this._router.navigate(['/noAccess']);
+    return error.message;
   }
 
   private handleNotFound = (error: HttpErrorResponse): string => {

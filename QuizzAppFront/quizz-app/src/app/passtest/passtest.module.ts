@@ -7,10 +7,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SuccessComponent } from './success/success.component';
+import { NoAccessComponent } from './no-access/no-access.component';
 
 
 @NgModule({
-  declarations: [IndexComponentP, SuccessComponent],
+  declarations: [IndexComponentP, SuccessComponent, NoAccessComponent],
   imports: [
     CommonModule,
     PasstestRoutingModule,
