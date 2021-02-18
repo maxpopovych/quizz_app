@@ -41,9 +41,7 @@ export class IndexComponentA implements OnInit {
 
   setTrue(id: number){
     this.answerService.setTrue(id).subscribe(res => {
-         this.answers = this.answers.filter(item => item.id !== id);
          console.log('Answer set true successfully!');
-         console.log(res);
     })
   }
 

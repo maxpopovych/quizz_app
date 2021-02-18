@@ -60,7 +60,7 @@ export class AnswerService {
   setTrue(id:number){
     console.log(this.httpOptions);
     console.log(this.apiURL +'setTrue/'+ id);
-    return this.httpClient.put<Answer>(this.apiURL +'setTrue/'+ id, this.httpOptions)
+    return this.httpClient.put<Answer>(this.apiURL +'setTrue/'+ id, {} ,this.httpOptions)
     .pipe(
       catchError(this.errorHandler)
     )
