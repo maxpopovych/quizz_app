@@ -37,6 +37,14 @@ export class ViewComponentR implements OnInit {
     this.id = this.route.snapshot.params['resultId'];
     this.resultService.find(this.id).subscribe((data: Userchoice[])=>{
       this.userchoices = data;
+      this.userchoices.forEach(element => {
+        this.questionService.find(element.questionId).subscribe((data: Question)=>{
+          element.questionText = data.text;
+        });
+        this.answerService.find(element.answerId).subscribe((data: Answer)=>{
+          element.answerText = data.text;
+        });
+      });
       console.log(this.userchoices);
     });
     this.resultService.findRes(this.id).subscribe((data: Result)=>{

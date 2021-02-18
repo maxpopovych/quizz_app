@@ -12,13 +12,13 @@
         <th>Answer Id</th>
         <th>Answer</th>
       </tr>
-      <tr *ngFor="let userchoice of userchoices;let i = index">
+      <tr *ngFor="let userchoice of userchoices;">
         <td>{{ userchoice.id }}</td>
         <td>{{ userchoice.resultId }}</td>
         <td>{{ userchoice.questionId }}</td>
-        <td></td>
+        <td>{{ userchoice.questionText }}</td>
         <td>{{ userchoice.answerId }}</td>
-        <td></td>
+        <td>{{ userchoice.answerText }}</td>
       </tr>
     </table>
  </div>

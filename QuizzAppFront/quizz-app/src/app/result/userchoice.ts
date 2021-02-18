@@ -3,4 +3,6 @@ export interface Userchoice {
     resultId:number;
     questionId:number;
     answerId:number;
+    questionText?:string;
+    answerText?:string;
 }
