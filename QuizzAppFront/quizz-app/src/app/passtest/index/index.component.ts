@@ -1,3 +1,4 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -25,6 +26,7 @@ export class IndexComponentP implements OnInit {
   questions!:Question[];
   passtest!:Passtest;
   send!:SendResult;
+  hasName!:boolean;
 
   constructor(
     public accesstestService: AccessTestService,
@@ -38,13 +40,23 @@ export class IndexComponentP implements OnInit {
   
   ngOnInit(): void {
     this.form = new FormGroup({
-      
+      intervieweeName:new FormControl('')
     });
     this.id = this.route.snapshot.params['testId'];
 
     this.accesstestService.start(this.id);
 
-    this.testService.find(this.id).subscribe(x=> this.test = x);
+    this.testService.find(this.id).subscribe(x=> {this.test = x
+      if(!(this.test.intervieweeName === null || this.test.intervieweeName === undefined || this.test.intervieweeName == ""))
+      {
+        this.hasName = true;
+      }
+      else
+      {
+        this.hasName = false;
+      }
+    });
+      
     this.questionService.getAll(this.id).subscribe((data: Question[])=>{
       this.questions = data; 
       this.questions.forEach(element => {
@@ -62,9 +74,17 @@ export class IndexComponentP implements OnInit {
     this.accesstestService.end(this.id);
 
     this.send = {testId:0,name:'',answers:{}}
-    this.send.name = this.test.intervieweeName ?? '';
+    if(this.hasName)
+    {
+      this.send.name = this.test.intervieweeName ?? "";
+    }
+    else{
+      this.send.name = this.form.controls['intervieweeName'].value;
+    }
+    
     this.send.testId = this.id;
     this.send.answers = this.form.value;
+    delete this.send.answers['intervieweeName'];
     this.sendService.create(this.send).subscribe(res => {
       console.log('Result send Successfully!');
       this.router.navigateByUrl('/success');
