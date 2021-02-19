@@ -112,9 +112,9 @@ namespace QuizzApp.Controllers
                 int score = 0;
                 foreach (KeyValuePair<string, string> ans in result.Answers)
                 {
-                    UserChoice userchoise = new UserChoice { ResultId = res.Id, QuestionId = db.Questions.FirstOrDefault(x => x.Text == ans.Key).Id, AnswerId = db.Answers.FirstOrDefault(x => x.text == ans.Value).Id };
+                    UserChoice userchoise = new UserChoice { ResultId = res.Id, QuestionId = db.Questions.FirstOrDefault(x => x.Text == ans.Key).Id, AnswerId = db.Answers.FirstOrDefault(x => x.Test == ans.Value).Id };
                     db.UserChoices.Add(userchoise);
-                    if (db.Answers.FirstOrDefault(x => x.text == ans.Value).isTrue)
+                    if (db.Answers.FirstOrDefault(x => x.Test == ans.Value).isTrue)
                     {
                         ++score;
                     }

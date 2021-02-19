@@ -20,7 +20,7 @@ namespace QuizzApp.Models
         /// <summary>
         /// Text of answer
         /// </summary>
-        public string text { get; set; }
+        public string Test { get; set; }
 
         /// <summary>
         /// Is answer true
