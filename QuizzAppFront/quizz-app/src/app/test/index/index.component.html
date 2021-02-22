@@ -1,0 +1,37 @@
+<div class="container">
+    <h1>Tests</h1>
+  
+    <a href="#" routerLink="/test/create/" class="btn btn-success mar">Create New Test</a>
+    <a href="#" routerLink="/result/" class="btn btn-primary mar">View test result</a>
+    
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>IntervieweeName</th>
+          <th>NumberOfRuns</th>
+          <th>StartDate</th>
+          <th>EndDate</th>
+          <th wIdth="220px">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let test of tests">
+        <td>{{ test.id }}</td>
+        <td>{{ test.name }}</td>
+        <td>{{ test.intervieweeName }}</td>
+        <td>{{ test.numberOfRuns }}</td>
+        <td>{{ test.sstartDate }}</td>
+        <td>{{ test.sendDate }}</td>
+        <td>
+          <button type="button" (click)="copyLink(test.id)" class="btn btn-primary mar">Copy link</button>
+          <a href="#" [routerLink]="['/test/', test.id, 'view']" class="btn btn-info mar">View</a>
+          <a href="#" [routerLink]="['/test/', test.id, 'edit']" class="btn btn-primary mar">Edit</a>
+          <a href="#" [routerLink]="['/question/', test.id]" class="btn btn-primary mar">Questions</a>
+          <button type="button" (click)="deleteTest(test.id)" class="btn btn-danger mar">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+ </div>

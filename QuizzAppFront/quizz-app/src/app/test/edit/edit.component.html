@@ -1,0 +1,79 @@
+<div class="container">
+    <h1>Update Test</h1>
+  
+    <a href="#" routerLink="/test/index" class="btn btn-primary">Back</a>
+        
+    <form [formGroup]="form" (ngSubmit)="submit()">
+         
+        <div class="form-group">
+            <label for="name">name</label>
+            <input 
+                formControlName="name"
+                id="name" 
+                type="text" 
+                [(ngModel)]="test.name"
+                class="form-control"/>
+            <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
+                <!-- <div *ngIf="f.name.errors.required">Name is required.</div> -->
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <label for="intervieweeName">Interviewee Name:</label>
+            <input 
+                formControlName="intervieweeName"
+                id="intervieweeName" 
+                type="text" 
+                [(ngModel)]="test.intervieweeName"
+                class="form-control">
+            <div *ngIf="f.intervieweeName.touched && f.intervieweeName.invalid" class="alert alert-danger">
+                <!-- <div *ngIf="f.intervieweeName.errors.required">Interviewee Name is required.</div> -->
+            </div>
+        </div>
+
+        
+        <div class="form-group">
+            <label for="numberOfRuns">Number Of Runs:</label>
+            <input 
+                formControlName="numberOfRuns"
+                id="numberOfRuns" 
+                type="number" 
+                [(ngModel)]="test.numberOfRuns"
+                class="form-control">
+            <div *ngIf="f.numberOfRuns.touched && f.numberOfRuns.invalid" class="alert alert-danger">
+                <!-- <div *ngIf="f.numberOfRuns.errors.required">Number Of Runs is required.</div> -->
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="startDate">Start Date:</label>
+            <input 
+                formControlName="startDate"
+                id="startDate" 
+                type="date" 
+                [(ngModel)]="test.startDate"
+                class="form-control">
+            <div *ngIf="f.startDate.touched && f.startDate.invalid" class="alert alert-danger">
+                <!-- <div *ngIf="f.startDate.errors.required">Start Date is required.</div> -->
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <label for="endDate">End Date:</label>
+            <input 
+                formControlName="endDate"
+                id="endDate" 
+                type="date" 
+                [(ngModel)]="test.endDate"
+                class="form-control">
+            <div *ngIf="f.endDate.touched && f.endDate.invalid" class="alert alert-danger">
+                <!-- <div *ngIf="f.endDate.errors.required">End Date is required.</div> -->
+            </div>
+        </div>
+
+
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Update</button>
+    </form>
+</div>

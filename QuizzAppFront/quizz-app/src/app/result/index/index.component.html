@@ -1,0 +1,28 @@
+<div class="container">
+    <h1>Results</h1>
+  
+<a href="#" routerLink="" class="btn btn-primary mar">Back</a>
+
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>IntervieweeName</th>
+          <th>Test id</th>
+          <th>Score</th>
+          <th wIdth="220px">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let result of results">
+          <td>{{ result.id }}</td>
+          <td>{{ result.intervieweeName }}</td>
+          <td>{{ result.testId }}</td>
+          <td>{{ result.score }}</td>
+          <td>
+            <a href="#" [routerLink]="['/result/', result.id, 'view']" class="btn btn-info">View</a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+ </div>

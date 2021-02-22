@@ -1,0 +1,31 @@
+<div class="container">
+    <h1>Test {{ id }} questions</h1>
+  
+    <a href="#" routerLink="" class="btn btn-primary mar">Back</a>
+
+    <a href="#" [routerLink]="['/question/', id, 'create']" class="btn btn-success mar">Create New Question</a>
+    
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Question</th>
+          <th>Test Id</th>
+          <th wIdth="220px">Action</th> 
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let question of questions">
+          <td>{{ question.id }}</td>
+          <td>{{ question.text }}</td>
+          <td>{{ question.testId }}</td>
+          <td>
+            <a href="#" [routerLink]="['/question/', question.id, 'view']" class="btn btn-info mar">View</a>
+            <a href="#" [routerLink]="['/question/', question.id, 'edit']" class="btn btn-primary mar">Edit</a>
+            <a href="#" [routerLink]="['/answer/', question.id]" class="btn btn-primary mar">Answers</a>
+            <button type="button" (click)="deleteQuestion(question.id)" class="btn btn-danger mar">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+ </div>

@@ -1,0 +1,35 @@
+<div class="container">
+    <h1>Test</h1>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+        <div class="mar">
+            <span>Your name:</span>
+            <span *ngIf = "hasName; else elseBlock">{{test.intervieweeName}}</span>
+            <ng-template #elseBlock>
+                <input
+                formControlName="intervieweeName"
+                type="text"
+                /> 
+            </ng-template>
+            
+        </div>
+        <h5>Questions</h5>
+
+        <div *ngFor="let question of questions" class="mar">
+            <div class="questionClass"> 
+                <span>{{question.text}}</span>
+                <div>
+                    <div *ngFor="let ans of question.answers">
+                        <input 
+                        formControlName={{question.text}}
+                        type="radio" 
+                        value={{ans.test}} 
+                        name={{question.text}}/>
+                        <span>{{ans.test}}</span>
+                    </div>
+                </div>  
+            </div>
+        </div>
+        <button class="btn btn-primary mar" type="submit" [disabled]="!form.valid">Submit</button>
+    </form>
+ </div>

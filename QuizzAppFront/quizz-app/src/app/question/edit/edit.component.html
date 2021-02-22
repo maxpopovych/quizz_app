@@ -1,0 +1,23 @@
+<div class="container">
+    <h1>Update Question</h1>
+  
+    <a href="#" [routerLink]="['/question/', id, 'index']" class="btn btn-primary">Back</a>
+        
+    <form [formGroup]="form" (ngSubmit)="submit()">
+         
+        <div class="form-group">
+            <label for="text">Text</label>
+            <input 
+                formControlName="text"
+                id="text" 
+                type="text" 
+                [(ngModel)]="question.text"
+                class="form-control"/>
+            <div *ngIf="f.text.touched && f.text.invalid" class="alert alert-danger">
+                <!-- <div *ngIf="f.name.errors.required">Name is required.</div> -->
+            </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Update</button>
+    </form>
+</div>

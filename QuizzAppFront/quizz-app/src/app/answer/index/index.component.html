@@ -1,0 +1,33 @@
+<div class="container">
+    <h1>Question {{ id }} answers</h1>
+  
+    <!-- <a href="#" [routerLink]="['/question/', id, 'index']" class="btn btn-primary">Back</a> -->
+
+    <button type="button" (click)="back()" class="btn btn-primary mar">Back</button>
+
+    <a href="#" [routerLink]="['/answer/', id, 'create']" class="btn btn-success mar">Create New Answer</a>
+    
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Answer</th>
+          <th>Test Id</th>
+          <th wIdth="220px">Action</th> 
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let answer of answers">
+          <td>{{ answer.id }}</td>
+          <td>{{ answer.test }}</td>
+          <td>{{ answer.questionId }}</td>
+          <td>
+            <a href="#" [routerLink]="['/answer/', answer.id, 'view']" class="btn btn-info mar">View</a>
+            <a href="#" [routerLink]="['/answer/', answer.id, 'edit']" class="btn btn-primary mar">Edit</a>
+            <button type="button" (click)="setTrue(answer.id)" class="btn btn-primary mar">Set True</button>
+            <button type="button" (click)="deleteAnswer(answer.id)" class="btn btn-danger mar">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+ </div>

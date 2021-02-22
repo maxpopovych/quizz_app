@@ -1,0 +1,21 @@
+<div class="container">
+    <h1>View Question</h1>
+  
+    <a href="#" [routerLink]="['/question/', question.testId, 'index']" class="btn btn-primary">Back</a>
+   
+    <div>
+        <strong>ID:</strong>
+        <p>{{ question.id }}</p>
+    </div>
+   
+    <div>
+        <strong>Question text:</strong>
+        <p>{{ question.text }}</p>
+    </div>
+   
+    <div>
+        <strong>Test Id:</strong>
+        <p>{{ question.testId }}</p>
+    </div>
+    
+</div>
