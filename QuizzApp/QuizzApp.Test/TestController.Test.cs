@@ -54,10 +54,12 @@ namespace QuizzApp.Test
                 };
                 try
                 {
+                    controller.Delete(100);
                     controller.Post(test);
                 }
                 catch(System.ArgumentException)
                 {
+                    controller.Post(test);
                 }
                 Assert.AreEqual(controller.Get(100), test);
             }
@@ -143,8 +145,6 @@ namespace QuizzApp.Test
                 }
                 catch (System.ArgumentException)
                 {
-                    controller.Delete(100);
-                    controller.Post(test);
                 }
                 Assert.AreEqual(controller.Get(), new List<Models.Test>() { test });
             }

@@ -65,7 +65,7 @@ namespace QuizzApp.Controllers
         {
             var test = db.Tests.First(x => x.Id == id);
             var curDate = DateTime.Now;
-            if (DateTime.Compare(test.StartDate,curDate) < 0)
+            if (DateTime.Compare(test.StartDate,curDate) < 0 && DateTime.Compare(curDate, test.EndDate) < 0)
             {
                 if (test.NumberOfRuns == null)
                 {
