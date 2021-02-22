@@ -112,11 +112,11 @@ namespace QuizzApp.Test
                 };
                 try
                 {
-                    controller.Post(test);
                     controller.Delete(100);
                 }
                 catch (System.ArgumentException)
                 {
+                    controller.Post(test);
                     controller.Delete(100);
                 }
                 Assert.IsNull(controller.Get(100));
