@@ -2,7 +2,7 @@
     <h1>Test</h1>
 
     <form [formGroup]="form" (ngSubmit)="submit()">
-        <div>
+        <div class="mar">
             <span>Your name:</span>
             <span *ngIf = "hasName; else elseBlock">{{test.intervieweeName}}</span>
             <ng-template #elseBlock>
@@ -15,8 +15,8 @@
         </div>
         <h5>Questions</h5>
 
-        <div *ngFor="let question of questions">
-            <div>
+        <div *ngFor="let question of questions" class="mar">
+            <div class="questionClass"> 
                 <span>{{question.text}}</span>
                 <div>
                     <div *ngFor="let ans of question.answers">
@@ -30,6 +30,6 @@
                 </div>  
             </div>
         </div>
-        <button class="btn btn-primary" type="submit" [disabled]="!form.valid">Submit</button>
+        <button class="btn btn-primary mar" type="submit" [disabled]="!form.valid">Submit</button>
     </form>
  </div>
