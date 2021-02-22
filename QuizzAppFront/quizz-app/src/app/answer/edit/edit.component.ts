@@ -29,7 +29,7 @@ export class EditComponent implements OnInit {
     });
     
     this.form = new FormGroup({
-      text: new FormControl('', [Validators.required])
+      test: new FormControl('', [Validators.required])
     });
   }
    
@@ -38,7 +38,7 @@ export class EditComponent implements OnInit {
   }
      
   submit(){
-    this.answer.test = this.form.controls['text'].value;
+    this.answer.test = this.form.controls['test'].value;
     //this.answer.testId = this.route.snapshot.params['answerId'];
     console.log(this.form.value);
     console.log(this.answer);

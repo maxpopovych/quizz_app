@@ -1,24 +1,28 @@
 <div class="container">
     <h1>Results</h1>
   
-    <a href="#" routerLink="/result/" class="btn btn-primary">Back</a>
+    <a href="#" routerLink="/result/" class="btn btn-primary mar">Back</a>
 
-    <table class="table table-bordered">
-      <tr>
-        <th>ID</th>
-        <th>Result id</th>
-        <th>Question Id</th>
-        <th>Question</th>
-        <th>Answer Id</th>
-        <th>Answer</th>
-      </tr>
-      <tr *ngFor="let userchoice of userchoices;">
-        <td>{{ userchoice.id }}</td>
-        <td>{{ userchoice.resultId }}</td>
-        <td>{{ userchoice.questionId }}</td>
-        <td>{{ userchoice.questionText }}</td>
-        <td>{{ userchoice.answerId }}</td>
-        <td>{{ userchoice.answerText }}</td>
-      </tr>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Result id</th>
+          <th>Question Id</th>
+          <th>Question</th>
+          <th>Answer Id</th>
+          <th>Answer</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let userchoice of userchoices;">
+          <td>{{ userchoice.id }}</td>
+          <td>{{ userchoice.resultId }}</td>
+          <td>{{ userchoice.questionId }}</td>
+          <td>{{ userchoice.questionText }}</td>
+          <td>{{ userchoice.answerId }}</td>
+          <td>{{ userchoice.answerText }}</td>
+        </tr>
+      </tbody>
     </table>
  </div>
