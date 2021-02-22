@@ -24,6 +24,8 @@ export class ViewComponentT implements OnInit {
       
     this.testService.find(this.id).subscribe((data: Test)=>{
       this.test = data;
+      this.test.sstartDate = new Date(this.test.startDate).toDateString();
+      this.test.sendDate = new Date(this.test.endDate).toDateString();
     });
   }
   

@@ -5,4 +5,6 @@ export interface Test {
     numberOfRuns?:number;
     startDate:Date;
     endDate:Date;
+    sstartDate?:string;
+    sendDate?:string;
 }

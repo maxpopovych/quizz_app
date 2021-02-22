@@ -6,13 +6,13 @@
     <form [formGroup]="form" (ngSubmit)="submit()">
   
           <div class="form-group">
-            <label for="text">text</label>
+            <label for="test">text</label>
             <input 
-                formControlName="text"
-                id="text" 
+                formControlName="test"
+                id="test" 
                 type="text" 
                 class="form-control"/>
-            <div *ngIf="f.text.touched && f.text.invalid" class="alert alert-danger">
+            <div *ngIf="f.test.touched && f.test.invalid" class="alert alert-danger">
                 <!-- <div *ngIf="f.text.errors.required">Name is required.</div> -->
             </div>
         </div>

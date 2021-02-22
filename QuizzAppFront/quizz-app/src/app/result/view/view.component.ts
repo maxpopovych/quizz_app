@@ -42,7 +42,7 @@ export class ViewComponentR implements OnInit {
           element.questionText = data.text;
         });
         this.answerService.find(element.answerId).subscribe((data: Answer)=>{
-          element.answerText = data.text;
+          element.answerText = data.test;
         });
       });
       console.log(this.userchoices);

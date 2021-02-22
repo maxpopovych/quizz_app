@@ -17,6 +17,10 @@ export class IndexComponentT implements OnInit {
   ngOnInit(): void {
     this.testService.getAll().subscribe((data: Test[])=>{
       this.tests = data;
+      this.tests.forEach(element => {
+        element.sstartDate = new Date(element.startDate).toDateString();
+        element.sendDate = new Date(element.endDate).toDateString();
+      });
       console.log(this.tests);
     })  
   }

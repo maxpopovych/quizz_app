@@ -62,39 +62,6 @@ namespace QuizzApp.Controllers
             IQueryable<UserChoice> result = db.UserChoices.Where(x => x.ResultId == id).DefaultIfEmpty();
             return result;
         }
-        /*
-        /// <summary>
-        /// Add result
-        /// </summary>
-        /// <param name="result"></param>
-        /// <returns></returns>
-        [HttpPost]
-        public IActionResult Post(SetResultRequest result)
-        {
-            if (ModelState.IsValid)
-            {
-                Result res = new Result { IntervieweeName = result.Name, TestId = result.TestId, Score = 0 };
-                db.Results.Add(res);
-                db.SaveChanges();
-                int score = 0;
-                foreach (KeyValuePair<string, int> ans in result.Answres)
-                {
-                    UserChoice userchoise = new UserChoice { ResultId = res.Id, QuestionId = int.Parse(ans.Key), AnswerId = ans.Value };
-                    db.UserChoices.Add(userchoise);
-                    if (db.Answers.FirstOrDefault(x => x.Id == ans.Value).isTrue)
-                    {
-                        ++score;
-                    }
-
-                }
-                res.Score = score;
-                db.Results.Update(res);
-                db.SaveChanges();
-                return Ok(result);
-            }
-
-            return BadRequest(ModelState);
-        }*/
 
         /// <summary>
         /// Add result
