@@ -44,7 +44,7 @@ export class IndexComponentP implements OnInit {
     });
     this.id = this.route.snapshot.params['testId'];
 
-    this.accesstestService.start(this.id);
+    this.accesstestService.start(this.id).subscribe(x=>{});
 
     this.testService.find(this.id).subscribe(x=> {this.test = x
       if(!(this.test.intervieweeName === null || this.test.intervieweeName === undefined || this.test.intervieweeName == ""))

@@ -15,7 +15,6 @@ export class AccessTestService {
 
   start(id: number){
     return this.httpClient.get(this.apiURL + '/start/' + id,{observe: 'response'});
-    
   }
 
   end(id: number){
