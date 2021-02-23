@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using NUnit.Framework;
 using QuizzApp.Models;
 using QuizzApp.Controllers;
+using System.Linq;
 
 namespace QuizzApp.Test
 {
@@ -146,7 +147,7 @@ namespace QuizzApp.Test
                 catch (System.ArgumentException)
                 {
                 }
-                Assert.AreEqual(controller.Get(), new List<Models.Test>() { test });
+                Assert.AreEqual(controller.Get().First(), new List<Models.Test>() { test }.First());
             }
         }
     }
