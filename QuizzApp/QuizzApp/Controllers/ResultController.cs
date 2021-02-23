@@ -73,13 +73,23 @@ namespace QuizzApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                Result res = new Result { IntervieweeName = result.Name, TestId = Int32.Parse(result.TestId), Score = 0 };
+                Result res = new Result 
+                { 
+                    IntervieweeName = result.Name, 
+                    TestId = Int32.Parse(result.TestId), 
+                    Score = 0 
+                };
                 db.Results.Add(res);
                 db.SaveChanges();
                 int score = 0;
                 foreach (KeyValuePair<string, string> ans in result.Answers)
                 {
-                    UserChoice userchoise = new UserChoice { ResultId = res.Id, QuestionId = db.Questions.FirstOrDefault(x => x.Text == ans.Key).Id, AnswerId = db.Answers.FirstOrDefault(x => x.Test == ans.Value).Id };
+                    UserChoice userchoise = new UserChoice 
+                    { 
+                        ResultId = res.Id, 
+                        QuestionId = db.Questions.FirstOrDefault(x => x.Text == ans.Key).Id, 
+                        AnswerId = db.Answers.FirstOrDefault(x => x.Test == ans.Value).Id 
+                    };
                     db.UserChoices.Add(userchoise);
                     if (db.Answers.FirstOrDefault(x => x.Test == ans.Value).isTrue)
                     {
