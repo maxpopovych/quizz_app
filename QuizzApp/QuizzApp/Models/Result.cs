@@ -26,5 +26,19 @@
         /// Count of right answers
         /// </summary>
         public int Score { get; set; }
+
+        /// <summary>
+        /// Is objects are equals
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            return obj is Result result &&
+                   Id == result.Id &&
+                   IntervieweeName == result.IntervieweeName &&
+                   TestId == result.TestId &&
+                   Score == result.Score;
+        }
     }
 }

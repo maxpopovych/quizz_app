@@ -24,5 +24,19 @@
         /// Related answer id
         /// </summary>
         public int AnswerId { get; set; }
+
+        /// <summary>
+        /// Is objects are equals
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public override bool Equals(object obj)
+        {
+            return obj is UserChoice choice &&
+                   Id == choice.Id &&
+                   ResultId == choice.ResultId &&
+                   QuestionId == choice.QuestionId &&
+                   AnswerId == choice.AnswerId;
+        }
     }
 }
