@@ -25,6 +25,9 @@ import { IndexComponentR } from './result/index/index.component';
 import { ViewComponentR } from './result/view/view.component';
 import { NoAccessComponent } from './passtest/no-access/no-access.component';
 
+import { AuthguardServiceService} from './authguard-service.service'
+import {AuthenticationGuard} from './authentication.guard'; 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,27 +56,28 @@ import { NoAccessComponent } from './passtest/no-access/no-access.component';
     TestModule,
     RouterModule.forRoot([
       { path: 'authentication', loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule) },
-      { path: '', component: IndexComponentT },
-      { path: 'question/:questionId', component: IndexComponentQ },
-      { path: 'question/:questionId/index', component: IndexComponentQ },
-      { path: 'question/:questionId/view', component: ViewComponentQ },
-      { path: 'question/:questionId/create', component: CreateComponentQ },
-      { path: 'question/:questionId/edit', component: EditComponentQ },
-      { path: 'answer/:answerId', redirectTo: 'answer/:answerId/index', pathMatch: 'full' },
-      { path: 'answer/:answerId/index', component: IndexComponentA },
-      { path: 'answer/:answerId/view', component: ViewComponentA },
-      { path: 'answer/:answerId/create', component: CreateComponentA },
-      { path: 'answer/:answerId/edit', component: EditComponent },
+      { path: '', component: IndexComponentT ,canActivate:[AuthenticationGuard]},
+      { path: 'question/:questionId', component: IndexComponentQ ,canActivate:[AuthenticationGuard]},
+      { path: 'question/:questionId/index', component: IndexComponentQ ,canActivate:[AuthenticationGuard]},
+      { path: 'question/:questionId/view', component: ViewComponentQ ,canActivate:[AuthenticationGuard]},
+      { path: 'question/:questionId/create', component: CreateComponentQ ,canActivate:[AuthenticationGuard]},
+      { path: 'question/:questionId/edit', component: EditComponentQ ,canActivate:[AuthenticationGuard]},
+      { path: 'answer/:answerId', redirectTo: 'answer/:answerId/index', pathMatch: 'full'},
+      { path: 'answer/:answerId/index', component: IndexComponentA ,canActivate:[AuthenticationGuard]},
+      { path: 'answer/:answerId/view', component: ViewComponentA ,canActivate:[AuthenticationGuard]},
+      { path: 'answer/:answerId/create', component: CreateComponentA ,canActivate:[AuthenticationGuard]},
+      { path: 'answer/:answerId/edit', component: EditComponent ,canActivate:[AuthenticationGuard]},
       { path: 'passTest/:testId', component: IndexComponentP },
       { path: 'success', component: SuccessComponent },
       { path: 'noAccess', component: NoAccessComponent },
-      { path: 'result', component: IndexComponentR },
-      { path: 'result/:resultId/view', component: ViewComponentR },
+      { path: 'result', component: IndexComponentR ,canActivate:[AuthenticationGuard]},
+      { path: 'result/:resultId/view', component: ViewComponentR ,canActivate:[AuthenticationGuard]},
       { path: '**', redirectTo: '/404', pathMatch: 'full'},
       { path: '', redirectTo: 'tests', pathMatch: 'full' },
     ])
   ],
   providers: [ 
+    AuthguardServiceService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorHandlerService,
