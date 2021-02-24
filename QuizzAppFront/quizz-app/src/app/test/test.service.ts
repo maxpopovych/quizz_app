@@ -5,13 +5,14 @@ import {  Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
   
 import { Test } from './test';
+import { environment } from 'src/environments/environment';
    
 @Injectable({
   providedIn: 'root'
 })
 export class TestService {
    
-  private apiURL = "https://localhost:5001/api";
+  private apiURL = environment.urlAddress+ "/api";
    
   httpOptions = {
     headers: new HttpHeaders({

@@ -5,6 +5,7 @@ import {  Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Userchoice } from './userchoice';
 import { Result } from './result';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -12,7 +13,7 @@ import { Result } from './result';
 })
 export class ResultService {
 
-  private apiURL = "https://localhost:5001/test";
+  private apiURL = environment.urlAddress+ "/test";
 
   httpOptions = {
     headers: new HttpHeaders({
