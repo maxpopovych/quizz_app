@@ -39,7 +39,7 @@ namespace QuizzApp.Test
         }
 
         [Test]
-        public void GetById()
+        public void GetByIdIfExist()
         {
             using (var controller = new TestController(new ApplicationContext(
                 TestDBBootstrapper.GetInMemoryDbContextOptions())))
@@ -55,14 +55,22 @@ namespace QuizzApp.Test
                 };
                 try
                 {
-                    controller.Delete(100);
                     controller.Post(test);
                 }
                 catch(System.ArgumentException)
                 {
-                    controller.Post(test);
                 }
                 Assert.AreEqual(controller.Get(100), test);
+            }
+        }
+
+        [Test]
+        public void GetByIdIfNotExist()
+        {
+            using (var controller = new TestController(new ApplicationContext(
+                TestDBBootstrapper.GetInMemoryDbContextOptions())))
+            {
+                Assert.IsNull(controller.Get(10000));
             }
         }
 
@@ -83,12 +91,10 @@ namespace QuizzApp.Test
                 };
                 try
                 {
-                    controller.Delete(100);
                     controller.Post(test);
                 }
                 catch (System.ArgumentException)
                 {
-                    controller.Post(test);
                 }
                 test.Name = "upd";
                 controller.Put(test);

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using Microsoft.AspNetCore.Mvc;
 using QuizzApp.Models;
 using QuizzApp.Services;
 
@@ -10,10 +11,11 @@ namespace QuizzApp.Controllers
     /// </summary>
     [ApiController]
     [Route("api/users")]
-    public class UsersController : ControllerBase
+    public class UsersController : ControllerBase, IDisposable
     {
         private readonly IUserService userService;
         private readonly ApplicationContext db;
+        private bool disposedValue;
 
         /// <summary>
         /// Class constructor
@@ -53,6 +55,11 @@ namespace QuizzApp.Controllers
         {
             System.Collections.Generic.IEnumerable<User> users = userService.GetAll();
             return Ok(users);
+        }
+
+  
+        public void Dispose()
+        {
         }
     }
 }

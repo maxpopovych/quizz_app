@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 
 import {  Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 import { SendResult } from './send-result';
 
@@ -11,7 +12,7 @@ import { SendResult } from './send-result';
 })
 export class PasstestService {
 
-  private apiURL = "https://localhost:5001/test/";  
+  private apiURL = environment.urlAddress+ "/test/";  
 
   httpOptions = {
     headers: new HttpHeaders({

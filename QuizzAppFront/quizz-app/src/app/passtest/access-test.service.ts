@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 
 import {  Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccessTestService {
 
-  private apiURL = "https://localhost:5001/api/access";  
+  private apiURL = environment.urlAddress + "/api/access";  
 
   constructor(private httpClient: HttpClient) { }
 
