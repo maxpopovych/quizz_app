@@ -36,7 +36,7 @@ namespace QuizzApp.Test
         }
 
         [Test]
-        public void GetById()
+        public void GetByIdIfExist()
         {
             using (var controller = new AnswersController(new ApplicationContext(
                 TestDBBootstrapper.GetInMemoryDbContextOptions())))
@@ -56,6 +56,16 @@ namespace QuizzApp.Test
                 {
                 }
                 Assert.AreEqual(controller.Get(100), answer);
+            }
+        }
+
+        [Test]
+        public void GetByIdIfNotExist()
+        {
+            using (var controller = new AnswersController(new ApplicationContext(
+                TestDBBootstrapper.GetInMemoryDbContextOptions())))
+            {
+                Assert.IsNull(controller.Get(10000));
             }
         }
 
@@ -115,7 +125,7 @@ namespace QuizzApp.Test
 
 
         [Test]
-        public void Get()
+        public void GetByQuestionId()
         {
             using (var controller = new AnswersController(new ApplicationContext(
                 TestDBBootstrapper.GetInMemoryDbContextOptions())))
@@ -133,8 +143,6 @@ namespace QuizzApp.Test
                 }
                 catch (System.ArgumentException)
                 {
-                    controller.Delete(100);
-                    controller.Post(answer);
                 }
                 Assert.AreEqual(controller.GetFromQuestion(100), new List<Models.Answer>() { answer });
             }

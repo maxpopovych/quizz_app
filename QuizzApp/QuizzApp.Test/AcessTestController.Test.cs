@@ -9,7 +9,7 @@ namespace QuizzApp.Test
     public class AcessTestControllerTest
     {
         [Test]
-        public void StartTest_Ok_Response()
+        public void StartTestOkResponse()
         {
             using (var controller = new TestController(new ApplicationContext(
                 TestDBBootstrapper.GetInMemoryDbContextOptions())))
@@ -44,7 +44,7 @@ namespace QuizzApp.Test
         }
 
         [Test]
-        public void StartTest_Ok_Response_with_null_numberOfRun()
+        public void StartTestOkResponseWithNullNumberOfRun()
         {
             using (var controller = new TestController(new ApplicationContext(
                 TestDBBootstrapper.GetInMemoryDbContextOptions())))
@@ -79,7 +79,7 @@ namespace QuizzApp.Test
         }
 
         [Test]
-        public void StartTest_Bad_Response_with_wrong_date()
+        public void StartTestBadResponseWithWrongDate()
         {
             using (var controller = new TestController(new ApplicationContext(
                 TestDBBootstrapper.GetInMemoryDbContextOptions())))
@@ -113,7 +113,7 @@ namespace QuizzApp.Test
         }
 
         [Test]
-        public void StartTest_Bad_Response_with_wron_numberOfRun()
+        public void StartTestBadResponseWithWrongNumberOfRun()
         {
             using (var controller = new TestController(new ApplicationContext(
                 TestDBBootstrapper.GetInMemoryDbContextOptions())))
@@ -148,7 +148,7 @@ namespace QuizzApp.Test
         }
 
         [Test]
-        public void EndtTest_Ok_Response()
+        public void EndtTestOkResponse()
         {
             using (var controller = new TestController(new ApplicationContext(
                 TestDBBootstrapper.GetInMemoryDbContextOptions())))
@@ -183,7 +183,7 @@ namespace QuizzApp.Test
         }
 
         [Test]
-        public void EndtTest_Bad_Response()
+        public void EndTestBadResponse()
         {
             using (var controller = new TestController(new ApplicationContext(
                 TestDBBootstrapper.GetInMemoryDbContextOptions())))
