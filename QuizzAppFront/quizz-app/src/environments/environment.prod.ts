@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  urlAddress: 'https://localhost:5001'
+  urlAddress: 'http://quizzmain-env.eba-5ehhxmt7.us-east-2.elasticbeanstalk.com'
 };
