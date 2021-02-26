@@ -31,7 +31,7 @@ export class IndexComponentT implements OnInit {
     selBox.style.left = '0';
     selBox.style.top = '0';
     selBox.style.opacity = '0';
-    selBox.value = 'http://localhost:4200/passTest/'+id;
+    selBox.value = window.location.href + 'passTest/'+id;
     document.body.appendChild(selBox);
     selBox.focus();
     selBox.select();
