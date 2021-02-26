@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlAddress: 'http://quizzmain-env.eba-5ehhxmt7.us-east-2.elasticbeanstalk.com'
+  urlAddress: 'https://quizzmain-env.eba-5ehhxmt7.us-east-2.elasticbeanstalk.com'
 };
 
 /*
