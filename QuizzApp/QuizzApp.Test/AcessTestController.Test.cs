@@ -14,7 +14,7 @@ namespace QuizzApp.Test
             using (var controller = new TestController(new ApplicationContext(
                 TestDBBootstrapper.GetInMemoryDbContextOptions())))
             {
-                var tommorow = DateTime.Today.AddDays(-1);
+                var tomorrow = DateTime.Today.AddDays(-1);
                 var yesterday = DateTime.Today.AddDays(1);
                 var test = new Models.Test()
                 {
@@ -22,7 +22,7 @@ namespace QuizzApp.Test
                     Name = "some name",
                     IntervieweeName = "inter name",
                     NumberOfRuns = 6,
-                    StartDate = tommorow,
+                    StartDate = tomorrow,
                     EndDate = yesterday
                 };
                 try
@@ -49,7 +49,7 @@ namespace QuizzApp.Test
             using (var controller = new TestController(new ApplicationContext(
                 TestDBBootstrapper.GetInMemoryDbContextOptions())))
             {
-                var tommorow = DateTime.Today.AddDays(-1);
+                var tomorrow = DateTime.Today.AddDays(-1);
                 var yesterday = DateTime.Today.AddDays(1);
                 var test = new Models.Test()
                 {
@@ -57,7 +57,7 @@ namespace QuizzApp.Test
                     Name = "some name",
                     IntervieweeName = "inter name",
                     NumberOfRuns = null,
-                    StartDate = tommorow,
+                    StartDate = tomorrow,
                     EndDate = yesterday
                 };
                 try
@@ -118,7 +118,7 @@ namespace QuizzApp.Test
             using (var controller = new TestController(new ApplicationContext(
                 TestDBBootstrapper.GetInMemoryDbContextOptions())))
             {
-                var tommorow = DateTime.Today.AddDays(-1);
+                var tomorrow = DateTime.Today.AddDays(-1);
                 var yesterday = DateTime.Today.AddDays(1);
                 var test = new Models.Test()
                 {
@@ -126,7 +126,7 @@ namespace QuizzApp.Test
                     Name = "some name",
                     IntervieweeName = "inter name",
                     NumberOfRuns = 0,
-                    StartDate = tommorow,
+                    StartDate = tomorrow,
                     EndDate = yesterday
                 };
                 try
@@ -148,12 +148,12 @@ namespace QuizzApp.Test
         }
 
         [Test]
-        public void EndtTestOkResponse()
+        public void EndTestOkResponse()
         {
             using (var controller = new TestController(new ApplicationContext(
                 TestDBBootstrapper.GetInMemoryDbContextOptions())))
             {
-                var tommorow = DateTime.Today.AddDays(-1);
+                var tomorrow = DateTime.Today.AddDays(-1);
                 var yesterday = DateTime.Today.AddDays(1);
                 var test = new Models.Test()
                 {
@@ -161,7 +161,7 @@ namespace QuizzApp.Test
                     Name = "some name",
                     IntervieweeName = "inter name",
                     NumberOfRuns = 6,
-                    StartDate = tommorow,
+                    StartDate = tomorrow,
                     EndDate = yesterday
                 };
                 try
@@ -188,7 +188,7 @@ namespace QuizzApp.Test
             using (var controller = new TestController(new ApplicationContext(
                 TestDBBootstrapper.GetInMemoryDbContextOptions())))
             {
-                var tommorow = DateTime.Today.AddDays(-1);
+                var tomorrow = DateTime.Today.AddDays(-1);
                 var yesterday = DateTime.Today.AddDays(1);
                 var test = new Models.Test()
                 {
@@ -196,8 +196,8 @@ namespace QuizzApp.Test
                     Name = "some name",
                     IntervieweeName = "inter name",
                     NumberOfRuns = 6,
-                    StartDate = tommorow,
-                    EndDate = tommorow
+                    StartDate = tomorrow,
+                    EndDate = tomorrow
                 };
                 try
                 {
