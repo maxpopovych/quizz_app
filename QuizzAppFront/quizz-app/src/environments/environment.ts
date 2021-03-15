@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  urlAddress: 'https://quizzapp20210301133452.azurewebsites.net'
+  urlAddress: 'https://quizzdeployapp.azurewebsites.net/'
 };
 
 /*
