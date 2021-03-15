@@ -34,6 +34,7 @@ steps:
     command: 'test'
     projects: '$(solution)'
 
+- task: PublishBuildArtifacts@1
 
 - task: AzureRmWebAppDeployment@4
   inputs:
