@@ -42,4 +42,4 @@ steps:
     azureSubscription: 'Azure subscription 1(775f0271-a5f4-43ba-9f2f-1bb210075eb3)'
     appType: 'webApp'
     WebAppName: 'quizzdeployapp'
-    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    package: '$(System.DefaultWorkingDirectory)/**/WebApp.zip'
