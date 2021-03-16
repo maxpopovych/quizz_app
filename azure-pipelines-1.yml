@@ -25,6 +25,7 @@ steps:
 - task: Npm@1
   inputs:
     command: 'install'
+    workingDir: 'QuizzAppFront\quizz-app'
   displayName: 'Install'
 
 - task: Npm@1
