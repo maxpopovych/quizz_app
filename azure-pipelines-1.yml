@@ -19,13 +19,16 @@ steps:
 - task: Npm@1
   inputs:
     command: 'install'
+  displayName: 'Install'
 
 - task: Npm@1
   inputs:
     command: 'custom'
     customCommand: 'install -g @angular/cli'
+  displayName: 'Install angular'
 
 - task: Npm@1
   inputs:
     command: 'custom'
     customCommand: 'run-script build --prod'
+  displayName: 'build --prod'
