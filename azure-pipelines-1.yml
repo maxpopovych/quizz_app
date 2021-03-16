@@ -34,3 +34,10 @@ steps:
     customCommand: 'run-script build --prod'
     workingDir: 'QuizzAppFront\quizz-app'
   displayName: 'build --prod'
+
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: 'QuizzAppFront\quizz-app\dist'
+    ArtifactName: 'quizz-app'
+    publishLocation: 'Container'
