@@ -27,8 +27,10 @@ steps:
     customCommand: 'install -g @angular/cli'
   displayName: 'Install angular'
 
+
 - task: Npm@1
   inputs:
     command: 'custom'
     customCommand: 'run-script build --prod'
+    workingDir: 'QuizzAppFront\quizz-app'
   displayName: 'build --prod'
