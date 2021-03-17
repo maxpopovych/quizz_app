@@ -147,5 +147,31 @@ namespace QuizzApp.Test
                 Assert.AreEqual(controller.GetFromQuestion(100), new List<Models.Answer>() { answer });
             }
         }
+
+        [Test]
+        public void SetTrue()
+        {
+            using (var controller = new AnswersController(new ApplicationContext(
+                TestDBBootstrapper.GetInMemoryDbContextOptions())))
+            {
+                var answer = new Models.Answer()
+                {
+                    Id = 100,
+                    isTrue = false,
+                    QuestionId = 100,
+                    Test = ""
+                };
+                try
+                {
+                    controller.Post(answer);
+                }
+                catch (System.ArgumentException)
+                {
+                }
+
+                controller.SetTrue(100);
+                Assert.AreEqual(controller.Get(100).isTrue, true);
+            }
+        }
     }
 }

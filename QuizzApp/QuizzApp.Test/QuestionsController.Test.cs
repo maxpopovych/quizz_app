@@ -118,6 +118,22 @@ namespace QuizzApp.Test
             }
         }
 
+        [Test]
+        public void GetByTestId_Wrong_Id()
+        {
+            using (var controller = new QuestionsController(new ApplicationContext(
+                TestDBBootstrapper.GetInMemoryDbContextOptions())))
+            {
+                try
+                {
+                    controller.Delete(1000);
+                }
+                catch (System.ArgumentException)
+                {
+                }
+                Assert.AreEqual(controller.GetFromTest(1000), new List<Models.Question>());
+            }
+        }
 
         [Test]
         public void GetByTestId()
