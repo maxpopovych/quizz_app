@@ -28,13 +28,13 @@ steps:
     projects: '$(solution)'
     configuration: '$(buildConfiguration)'
     arguments: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
-
+  displayName: build
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
     projects: '$(solution)'
     arguments: -c $(BuildConfiguration) --collect:"XPlat Code Coverage" -- RunConfiguration.DisableAppDomain=true
-
+  displayName: test
 - task: DotNetCoreCLI@2
   inputs:
     command: custom
