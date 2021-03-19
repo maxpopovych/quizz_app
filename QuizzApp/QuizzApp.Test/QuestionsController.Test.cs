@@ -119,7 +119,7 @@ namespace QuizzApp.Test
         }
 
         [Test]
-        public void GetByTestId_Wrong_Id()
+        public void GetByTestIdWrongId()
         {
             using (var controller = new QuestionsController(new ApplicationContext(
                 TestDBBootstrapper.GetInMemoryDbContextOptions())))
@@ -132,6 +132,23 @@ namespace QuizzApp.Test
                 {
                 }
                 Assert.AreEqual(controller.GetFromTest(1000), new List<Models.Question>());
+            }
+        }
+
+        [Test]
+        public void GetByTestIdIfTestNotExist()
+        {
+            using (var controller = new QuestionsController(new ApplicationContext(
+                TestDBBootstrapper.GetInMemoryDbContextOptions())))
+            {
+                try
+                {
+                    controller.Delete(2000);
+                }
+                catch (System.ArgumentException)
+                {
+                }
+                Assert.AreEqual(controller.GetFromTest(2000), new List<Models.Question>() { });
             }
         }
 
