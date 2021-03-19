@@ -33,7 +33,7 @@ steps:
   inputs:
     command: 'test'
     projects: '$(solution)'
-    arguments: -c $(BuildConfiguration) --collect:"XPlat Code Coverage" -- RunConfiguration.DisableAppDomain=true /p:Exclude="[*]QuizzApp.Startup"
+    arguments: -c $(BuildConfiguration) --collect:"XPlat Code Coverage" -- RunConfiguration.DisableAppDomain=true '/p:Exclude="[*]QuizzApp.Startup"'
   displayName: test
 - task: DotNetCoreCLI@2
   inputs:
