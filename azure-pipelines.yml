@@ -56,7 +56,7 @@ steps:
 - task: AzureRmWebAppDeployment@4
   inputs:
     ConnectionType: 'AzureRM'
-    azureSubscription: 'Azure subscription 1(775f0271-a5f4-43ba-9f2f-1bb210075eb3)'
+    azureSubscription: 'Azure for Students (d5c070ac-c8ff-413b-8148-8c2348e0db01)'
     appType: 'webApp'
     WebAppName: 'quizzdeployapp'
     package: '$(build.artifactStagingDirectory)\WebApp.zip'
